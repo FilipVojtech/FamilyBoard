@@ -6,29 +6,26 @@
  * @flow strict-local
  */
 
-//Materialize UI
-//<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-import React from 'react';
+import React, {useState} from 'react';
 import {
     StyleSheet,
-    Text,
     View,
+    SafeAreaView,
+    Text,
+    TextInput,
+    Button,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {AppTabs} from './app/components/Navigation';
 
-const App: () => React$Node = () => {
+export default function App() {
+    const [outputText, setOutputText] = useState('');
+
     return (
-        <View>
-            <Text style={styles.ayy}>Frrrr</Text>
-        </View>
+        <NavigationContainer>
+            <TextInput placeholder={'HELP'}/>
+            <Button title={'Add'}/>
+            <AppTabs/>
+        </NavigationContainer>
     );
-};
-
-const styles = StyleSheet.create({
-    ayy: {
-        fontSize: 60,
-        color: '#ff0000',
-    },
-});
-
-export default App;
+}
