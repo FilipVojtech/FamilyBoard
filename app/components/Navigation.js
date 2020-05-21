@@ -1,34 +1,20 @@
-import * as React from 'react';
-import {Text} from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {HomeStack} from './HomeStack';
+import {NotesStack} from './NotesStack';
+import {UserStack} from './UserStack';
 
-interface AppTabsProps {
-}
+const Tab = createBottomTabNavigator();
 
-const Tabs = createBottomTabNavigator();
-
-function Home() {
+export default function Navigation() {
     return (
-        <Text>
-            Home
-        </Text>
+        <NavigationContainer>
+            <Tab.Navigator initialRouteName='Home'>
+                <Tab.Screen name="Notes" component={NotesStack}/>
+                <Tab.Screen name="Home" component={HomeStack}/>
+                <Tab.Screen name="User" component={UserStack}/>
+            </Tab.Navigator>
+        </NavigationContainer>
     );
 }
-
-function Notes() {
-    return (
-        <Text>Notes</Text>
-    );
-}
-
-export const AppTabs: React.FC = ({}) => {
-    return (
-        <Tabs.Navigator>
-            <Tabs.Screen name='Home' component={Home}/>
-            <Tabs.Screen name='Notes' component={Notes}/>
-            {/*<Tabs.Screen name='Calendar'/>*/}
-            {/*<Tabs.Screen name='Messages'/>*/}
-            {/*<Tabs.Screen name='User'/>*/}
-        </Tabs.Navigator>
-    );
-};
