@@ -1,22 +1,29 @@
 import React, {useState} from 'react';
-import {AsyncStorage} from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 
-export const AuthContext = React.createContext({});
+export const AuthContext = React.createContext({
+    user: null,
+    login: () => {
+    },
+    logout: () => {
+    },
+});
 
 //Dummy data pro uživatele
 export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState('null');
+    const [user, setUser] = useState(null);
 
     return (
         <AuthContext.Provider value={{
-            user,
+            user: user,
             login: () => {
-                const someUser = {username: 'Fracis'};
-                setUser(someUser);
-                AsyncStorage.setItem('user', JSON.stringify(someUser));
+                const fakeUser = {username: 'Francis'};
+                setUser(fakeUser.username);
+                AsyncStorage.setItem('user', JSON.stringify(fakeUser));
             },
             logout: () => {
-                AsyncStorage.removeItem('user');
+                setUser(null);
+                AsyncStorage.setItem('user', null);
             },
         }}>
             {children}
