@@ -4,12 +4,12 @@ import {
 } from 'react-native';
 import {Center} from '../components/Center';
 
+//Domovská obrazovka
+//Domovkská obrazovka obsahuje stručný přehled z ostatních karet
 export default function HomeScreen() {
     return (
-        <React.Fragment>
-            <Center>
-                <Text>Home Screen</Text>
-            </Center>
-        </React.Fragment>
+        <Center>
+            <Text>Home Screen</Text>
+        </Center>
     );
 }

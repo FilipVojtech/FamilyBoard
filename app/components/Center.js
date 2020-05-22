@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
+//Vycentruje cokoliv je tímto ohraničeno
 export const Center = ({children}) => {
     return (
         <View style={{

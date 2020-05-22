@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import UserScreen from '../screens/UserScreen';
 import HealthScreen from '../screens/HealthScreen';
 
-
+//Navigační stack pro záložku uživatele
 export const UserStack = ({}) => {
     const Stack = createStackNavigator();
 

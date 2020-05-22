@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import NoteList from '../components/NoteList';
 
+//Obrazovka obsahující seznam všech poznámek a tlačítko pro přidání poznámky
 export default function NotesScreen({navigation}) {
     return (
         <View>

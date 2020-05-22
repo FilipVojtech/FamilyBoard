@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import NoteItem from './NoteItem';
 
+//Modul pro vytvoření listu poznámek z komponentu NoteItem
+//Uchovává v sobě state poznámek a spravuje jej
 export default function NoteList() {
     const [currNotes, addNotes] = useState([
         {
