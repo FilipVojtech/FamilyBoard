@@ -3,8 +3,8 @@ import {AuthContext} from './AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import {ActivityIndicator} from 'react-native';
-import Navigation from './Navigation';
-import {Login} from './Login';
+import Navigation from './stacks/Navigation';
+import {Login} from './stacks/Login';
 import {NavigationContainer} from '@react-navigation/native';
 
 /**Vykreslování správné části aplikace**/
