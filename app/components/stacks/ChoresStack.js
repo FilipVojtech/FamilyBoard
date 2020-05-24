@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ChoresScreen from '../screens/ChoresScreen';
+import ChoresScreen from '../../screens/ChoresScreen';
 
 export const ChoresStack = ({}) => {
     const Stack = createStackNavigator();

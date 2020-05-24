@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../../screens/HomeScreen';
 import {Text, TouchableOpacity} from 'react-native';
-import {AuthContext} from './AuthProvider';
+import {AuthContext} from '../AuthProvider';
 
 //Navigační stack pro domovskou obrazovku
 export const HomeStack = ({}) => {

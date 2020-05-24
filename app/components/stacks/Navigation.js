@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeStack} from './HomeStack';
 import {NotesStack} from './NotesStack';
-import {UserStack} from './UserStack';
-import MessagesScreen from '../screens/MessagesScreen';
+import {UserStack} from '../UserStack';
+import MessagesScreen from '../../screens/MessagesScreen';
 import {ChoresStack} from './ChoresStack';
-import {AuthContext} from './AuthProvider';
+import {AuthContext} from '../AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
@@ -20,18 +20,18 @@ export default function Navigation() {
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
-                    if (route.name === 'Home') iconName = focused ? 'home-outline' : 'home';
-                    else if (route.name === 'Notes') iconName = focused ? 'note-multiple-outline' : 'note-multiple';
-                    else if (route.name === 'Messages') iconName = focused ? 'message-text-outline' : 'message-text';
-                    else if (route.name === 'Chores') iconName = focused ? 'calendar-month-outline' : 'calendar-month';
-                    else if (route.name === 'User') iconName = focused ? 'account-circle-outline' : 'account-circle';
+                    if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
+                    else if (route.name === 'Notes') iconName = focused ? 'note-multiple' : 'note-multiple-outline';
+                    else if (route.name === 'Messages') iconName = focused ? 'message-text' : 'message-text-outline';
+                    else if (route.name === 'Chores') iconName = focused ? 'calendar-month' : 'calendar-month-outline';
+                    else if (route.name === 'User') iconName = focused ? 'account-circle' : 'account-circle-outline';
 
                     // You can return any component that you like here!
                     return <Icon name={iconName} size={size} color={color}/>;
                 },
             })}
             tabBarOptions={{
-                activeTintColor: 'tomato',
+                activeTintColor: '#40E0D0',
                 inactiveTintColor: 'gray',
             }}
         >
