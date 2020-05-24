@@ -3,6 +3,7 @@ import {
     View,
     Text,
     Button,
+    StyleSheet,
 } from 'react-native';
 import {AuthContext} from '../components/AuthProvider';
 
@@ -10,11 +11,18 @@ import {AuthContext} from '../components/AuthProvider';
 //Obsahuje profilový obrázek, jméno, ostatní členy rodiny, odkaz na obrazovku zdraví
 export default function UserScreen({navigation}) {
     const {user, logout} = useContext(AuthContext);
+
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>User: {user}</Text>
-            <Button title='Health' onPress={() => navigation.navigate('Health')}/>
-            <Button title='Log Out' onPress={() => logout()}/>
+            <Text style={style.name}>{user.name} {user.surname}</Text>
+            <Button title='Zdravotní karta' onPress={() => navigation.navigate('Health')}/>
+            <Button title='Odhlásit se' onPress={() => logout()}/>
         </View>
     );
 }
+
+const style = StyleSheet.create({
+    name: {
+        fontSize: 36,
+    },
+});

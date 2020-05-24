@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {FlatList} from 'react-native';
 import NoteItem from './NoteItem';
+import {AuthContext} from './AuthProvider';
 
 //Modul pro vytvoření listu poznámek z komponentu NoteItem
 //Uchovává v sobě state poznámek a spravuje jej
@@ -161,18 +162,23 @@ export default function NoteList() {
             data={currNotes}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => <NoteItem object={item}/>}
+            style={{
+                marginTop: 10,
+                marginBottom: 35
+            }}
         />
     );
 }
 
 class Note {
     constructor(id, title, text) {
+        const {name} = useContext(AuthContext);
         this.id = id.toString();
         this.title = title;
         this.dateAdded = new Date().getDate() + '.' + new Date().getMonth() + '. ' + new Date().getFullYear();
         this.isDone = false;
         this.text = text;
         this.datum = new Date().toDateString();
-        this.user = 'test';
+        this.user = name;
     }
 }

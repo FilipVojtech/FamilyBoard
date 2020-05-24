@@ -1,24 +1,24 @@
-import React, {useContext} from 'react';
+import React, {useState} from 'react';
 import {
     View,
     Text,
     Button,
 } from 'react-native';
 import {Center} from '../components/Center';
-import {AuthContext} from '../components/AuthProvider';
 
 //Registrační obrazovka
 //Registrovat se mohou pouze rodiče (osoby nad 18 let)
 export default function RegisterScreen({navigation}) {
-    const {user} = useContext(AuthContext);
+    const [isShown, setIsShown] = useState(false);
+    const text = isShown ? 'Už jsi' : 'Nejsi zaregistrovaný';
+
     return (
         <Center>
             <View>
-                <Text>Register!</Text>
-                <Text>Usr: {user ?? 'null'}</Text>
-                <Button title={'Go back to login'} onPress={() => navigation.navigate('Login')}/>
+                <Button title={'Zaregistrovate se'} onPress={() => setIsShown(true)}/>
+                <Button title={'Zpět na přihlášení'} onPress={() => navigation.navigate('Login')}/>
+                <Text>{text}</Text>
             </View>
         </Center>
-
     );
 }

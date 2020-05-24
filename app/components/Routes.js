@@ -19,12 +19,11 @@ export default function Routes({}) {
         AsyncStorage.getItem('user')
             .then(userString => {
                 if (userString) {
-                    //Pokud byl nalezen uživatel, tak ho automaticky přihlásit
-                    login();
+                    // login();
                 }
                 setLoading(false);
             }).catch(err => {
-            console.log(err);
+            console.log('err', err);
         });
     }, []);
 
