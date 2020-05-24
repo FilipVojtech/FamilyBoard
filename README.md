@@ -1,7 +1,14 @@
 # FamilyBoard
 Online Family Board  
 Family Board is an multi-platform app primarily for phones.  
-App is being synced with a server so your data is accesible virtually anywhere.  
+App is being synced with a server so your data is accesible virtually anywhere. 
+
+## Why this?
+This is my semi-annual work. It's a school project.  
+Assignment:
+   Create a JavaScript app with minimum of 800 lines  
+
+My goal was to learn a new JS framework. In the end I choose React Native.
 
 ### How to run this app
 This is a React Native app
