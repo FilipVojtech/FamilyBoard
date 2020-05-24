@@ -4,10 +4,10 @@ import {
     ScrollView,
 } from 'react-native';
 
-export default function TextMessages() {
+export default function TextMessages(props) {
     return (
-        <ScrollView>
-            <Text>Zpráva</Text>
+        <ScrollView style={{flexDirection: 'column-reverse'}}>
+            <Text>Zpráva: {props.message}</Text>
         </ScrollView>
     );
 }
