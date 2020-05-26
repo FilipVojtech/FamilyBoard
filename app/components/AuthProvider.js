@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
+import {Themes} from './Themes';
 
 export const AuthContext = React.createContext({
-    name: null,
-    surname: null,
-    isParent: null,
-    UUID: null,
+    user: null,
     profilePicture: null,
     login: () => {
     },
@@ -21,7 +19,7 @@ export const AuthProvider = ({children}) => {
 
     /**
      * Pole je zde použito jen pro účely vývoje
-     * ===============
+
      * isParent: true: uživatel je považován za rodiče/zákoného zástupce a má plná oprávnění
      *           false: uživatel je považován za dítě a nemá plná oprávnění
      */
@@ -38,21 +36,21 @@ export const AuthProvider = ({children}) => {
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));
-                console.log(users);
             },
             loginChild: () => {
                 let addedUser = new User('Francis', 'z Assisi', false, '2f4a7080-4605-455b-a3ea-2ad686dd54d1');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));
-                console.log(users);
             },
             logout: () => {
                 setUser(null);
                 AsyncStorage.removeItem('user');
             },
         }}>
-            {children}
+            <Themes>
+                {children}
+            </Themes>
         </AuthContext.Provider>
     );
 };
