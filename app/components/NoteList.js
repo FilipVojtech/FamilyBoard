@@ -26,7 +26,7 @@ export default function NoteList(props) {
             });
     });
 
-    if (notes.length === 0) {
+    if (notes == null || notes.length === 0) {
         return (
             <Center>
                 <Text style={{textAlign: 'center'}}>Nic tu není</Text>

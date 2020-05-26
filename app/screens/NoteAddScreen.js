@@ -3,7 +3,6 @@ import {Button, StyleSheet, TextInput, View} from 'react-native';
 import {ThemeContext} from '../components/Themes';
 import {AuthContext} from '../components/AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //TODO: Obrazovka pro upravování poznámek
 export default function NoteAddScreen({navigation}) {
@@ -67,7 +66,11 @@ export default function NoteAddScreen({navigation}) {
                          **/
                         }
                         const createdNote = new Note(title, text, user, parsedNotes);
-                        AsyncStorage.setItem('notes', JSON.stringify([...parsedNotes, createdNote]));
+                        if (parsedNotes == null) {
+                            AsyncStorage.setItem('notes', JSON.stringify([createdNote]));
+                        } else {
+                            AsyncStorage.setItem('notes', JSON.stringify([...parsedNotes, createdNote]));
+                        }
                         navigation.goBack();
                     }}
                 />
@@ -81,7 +84,7 @@ export default function NoteAddScreen({navigation}) {
  */
 class Note {
     constructor(title, text, user, parsedNotes) {
-        this.id = (parsedNotes.length === 0 || parsedNotes == null) ? 0 : parsedNotes[parsedNotes.length - 1].id + 1;
+        this.id = (parsedNotes == null || parsedNotes.length === 0) ? 0 : parsedNotes[parsedNotes.length - 1].id + 1;
         this.key = this.id.toString();
         this.dateAdded = new Date().getDate() + '.' + new Date().getMonth() + '. ' + new Date().getFullYear();
         this.isDone = false;
