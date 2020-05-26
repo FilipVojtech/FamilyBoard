@@ -1,184 +1,137 @@
-import React, {useState, useContext} from 'react';
-import {FlatList} from 'react-native';
-import NoteItem from './NoteItem';
+import React, {useState, useContext, useEffect} from 'react';
+import {
+    Alert,
+    FlatList,
+    StyleSheet,
+    Text, TouchableOpacity,
+    View,
+} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {Center} from './Center';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ThemeContext} from './Themes';
 import {AuthContext} from './AuthProvider';
 
 //Modul pro vytvoření listu poznámek z komponentu NoteItem
 //Uchovává v sobě state poznámek a spravuje jej
-export default function NoteList() {
-    const [currNotes, addNotes] = useState([
-        {
-            id: 0,
-            title: 'dsad',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'dsadsadad asd sa fasdfdssdaff sd',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 1,
-            title: 'Hkhjdskanjk cx',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'opopopopo&nbsp; op p op op op o o[cvoxz[c',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 2,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 3,
-            title: 'dsa',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 4,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'saFd zsv',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 5,
-            title: 'dsad',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'dsadsadad asd sa fasdfdssdaff sd',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 6,
-            title: 'Hkhjdskanjk cx',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'opopopopo&nbsp; op p op op op o o[cvoxz[c',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 7,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 8,
-            title: 'dsa',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 9,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'saFd zsv',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 10,
-            title: 'dsad',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'dsadsadad asd sa fasdfdssdaff sd',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 11,
-            title: 'Hkhjdskanjk cx',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'opopopopo&nbsp; op p op op op o o[cvoxz[c',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 12,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 13,
-            title: 'dsa',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 14,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'saFd zsv',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 15,
-            title: 'dsad',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'dsadsadad asd sa fasdfdssdaff sd',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 16,
-            title: 'Hkhjdskanjk cx',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'opopopopo&nbsp; op p op op op o o[cvoxz[c',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 17,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 18,
-            title: 'dsa',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: '',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 19,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'saFd zsv',
-            datum: 'Thu May 21 2020',
-        }, {
-            id: 20,
-            title: '',
-            dateAdded: '21.4. 2020',
-            isDone: false,
-            text: 'saFd zsv',
-            datum: 'Thu May 21 2020',
-        },
-    ]);
+export default function NoteList(props) {
+    const {mainColor} = useContext(ThemeContext);
+    const {user} = useContext(AuthContext);
+    const [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        AsyncStorage.getItem('notes')
+            .then(value => {
+                setNotes(JSON.parse(value));
+            });
+    });
+
+    if (notes.length === 0) {
+        return (
+            <Center>
+                <Text style={{textAlign: 'center'}}>Nic tu není</Text>
+                <Text style={{textAlign: 'center'}}>Pro přidání, klepněte na tlačítko přidat poznámku</Text>
+            </Center>
+        );
+    }
 
     return (
-        <FlatList
-            data={currNotes}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({item}) => <NoteItem object={item}/>}
-            style={{
-                marginTop: 10,
-                marginBottom: 35
-            }}
-        />
+        <React.Fragment>
+            {/*<Button title={'Log notes'} onPress={() => console.log(notes)}/>*/}
+            <FlatList
+                data={notes}
+                renderItem={({item}) => (
+                    <TouchableOpacity
+                        style={style.note}
+                        onPress={() => props.navigation.navigate('Edit')}
+                        onLongPress={() => {
+                            if (user.isParent || item.user.UUID === user.UUID) {
+                                Alert.alert(
+                                    'Jsi si jistý?',
+                                    'Opravdu chceš vymazat tuto poznámku? \nNelze ji pak vrátit zpět',
+                                    [{
+                                        text: 'Jsem si jistý',
+                                        onPress: () => {
+                                            for (let i = 0; i < notes.length; i++) {
+                                                if (notes[i].id === item.id) {
+                                                    notes.splice(i, 1);
+                                                }
+                                            }
+                                            AsyncStorage.setItem('notes', JSON.stringify(notes));
+                                        },
+                                    }, {
+                                        text: 'Nemazat!',
+                                    }],
+                                );
+                            } else {
+                                Alert.alert(
+                                    'Nedostatečná opravnění',
+                                    'Poznámku, kterou vytvořil rodič, může smazat jen rodič.',
+                                );
+                            }
+                        }}>
+                        <View style={style.noteText}>
+                            <Text style={style.unimportant}>Přidáno: {item.dateAdded}</Text>
+                            {item.title ? (<Text style={style.title}>{item.title}</Text>) : null}
+                            <Text style={style.unimportant}>{item.user.name} {item.user.surname}</Text>
+                            <Text style={style.text}>{item.text}</Text>
+                        </View>
+                        {/**
+                         Zaškrtávací políčko, které uživateli říká, jestli je poznámka splněna
+                         **/}
+                        <TouchableOpacity
+                            style={style.noteSettings}
+                            onPress={() => {
+                                for (let i = 0; i < notes.length; i++) {
+                                    if (notes[i].id === item.id) {
+                                        notes[i].isDone = !notes[i].isDone;
+                                    }
+                                }
+                                AsyncStorage.setItem('notes', JSON.stringify(notes));
+                            }}>
+                            <Icon
+                                name={item.isDone ? 'checkbox-marked-circle-outline' : 'checkbox-blank-circle-outline'}
+                                size={34} color={mainColor}/>
+                        </TouchableOpacity>
+                    </TouchableOpacity>
+                )}
+            />
+        </React.Fragment>
     );
 }
 
-class Note {
-    constructor(id, title, text) {
-        const {name} = useContext(AuthContext);
-        this.id = id.toString();
-        this.title = title;
-        this.dateAdded = new Date().getDate() + '.' + new Date().getMonth() + '. ' + new Date().getFullYear();
-        this.isDone = false;
-        this.text = text;
-        this.datum = new Date().toDateString();
-        this.user = name;
-    }
-}
+const style = StyleSheet.create({
+    note: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'space-around',
+
+        marginVertical: 5,
+        marginHorizontal: 5,
+        padding: 10,
+        borderRadius: 10,
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    text: {
+        fontSize: 16,
+    },
+    unimportant: {
+        fontSize: 12,
+        fontStyle: 'italic',
+    },
+    noteText: {
+        flex: 1,
+        alignSelf: 'center',
+        flexGrow: 1,
+        flexShrink: 0,
+        alignContent: 'stretch',
+    },
+    noteSettings: {
+        alignSelf: 'center',
+        marginRight: 10,
+    },
+});
