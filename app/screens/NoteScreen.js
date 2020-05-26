@@ -6,7 +6,7 @@ import NoteList from '../components/NoteList';
 import {ThemeContext} from '../components/Themes';
 
 //Obrazovka obsahující seznam všech poznámek a tlačítko pro přidání poznámky
-export default function NotesScreen({navigation}) {
+export default function NoteScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
     return (
         <React.Fragment>
