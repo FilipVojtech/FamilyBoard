@@ -3,7 +3,9 @@ import {
     View,
     TextInput,
     StyleSheet,
-    TouchableOpacity, Text, FlatList,
+    TouchableOpacity,
+    Text,
+    FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeContext} from '../components/Themes';
@@ -28,15 +30,45 @@ export default function MessagesScreen() {
     return (
         <View style={style.screen}>
             <FlatList
+                inverted={true}
                 data={messages}
                 renderItem={({item, index}) => (
-                    <View style={style.messagesArea}>
-                        {(index > 0 && messages[index - 1].dateAdded === item.dateAdded) ?
+                    <View
+                        style={[
+                            style.messagesArea,
+                            user.UUID === item.UUID ? {
+                                alignItems: 'flex-end',
+                                marginLeft: 50,
+                            } : {
+                                alignItems: 'flex-start',
+                                marginRight: 50,
+                            },
+                        ]}>
+                        {/*Date added*/}
+                        {(index < messages.length - 1 && messages[index + 1].dateAdded === item.dateAdded) ?
                             null : <Text style={[style.unimportant, style.date]}>{item.dateAdded}</Text>}
-                        <View>
-                            {(index > 0 && messages[index - 1].UUID === item.UUID) ?
-                                null : <Text style={[style.unimportant, style.author]}>{item.author}</Text>}
-                            <Text style={style.messageText}>{item.message}</Text>
+                        <View style={[
+                            style.message,
+                            user.UUID === item.UUID ? {
+                                backgroundColor: mainColor,
+                            } : {},
+                        ]}>
+                            <View>
+                                {/*Author*/}
+                                {(index < messages.length - 1 && messages[index + 1].UUID === item.UUID) ?
+                                    null : <Text style={[style.unimportant, style.author]}>{item.author}</Text>}
+                                {/*Message*/}
+                                <Text style={[
+                                    style.messageText,
+                                    user.UUID === item.UUID ? {
+                                        textAlign: 'right',
+                                    } : {
+                                        textAlign: 'left',
+                                    },
+                                ]}>{item.message}</Text>
+                                {/*Timestamp*/}
+                                <Text style={style.unimportant}>{item.timeStamp}</Text>
+                            </View>
                         </View>
                     </View>
                 )
@@ -67,10 +99,15 @@ export default function MessagesScreen() {
                                 //Vyvoří zprávu jako objekt
                                 //Nastaví state, tak aby odpovídal skutečnosti
                                 //Uloží seznam zpráv do Uložiště
-                                const createdMessage = new Message(messages.length.toString(), `${user.name} ${user.surname}`, message, user.UUID);
+                                const createdMessage = new Message(messages == null ? '0' : messages.length.toString(), `${user.name} ${user.surname}`, message, user.UUID);
                                 setMessage('');
-                                setMessages([...messages, createdMessage]);
-                                AsyncStorage.setItem('messages', JSON.stringify([...messages, createdMessage]));
+                                if (messages == null) {
+                                    setMessages([createdMessage]);
+                                    AsyncStorage.setItem('messages', JSON.stringify([createdMessage]));
+                                } else {
+                                    setMessages([createdMessage, ...messages]);
+                                    AsyncStorage.setItem('messages', JSON.stringify([createdMessage, ...messages]));
+                                }
                             }}>
                             {/** Tlačítko pro deslání zprávy */}
                             <Icon
@@ -95,8 +132,9 @@ class Message {
         this.key = key;
         this.author = author;
         this.message = message;
-        this.dateAdded = `${new Date().getDay()}.${new Date().getMonth()} ${new Date().getFullYear()}`;
+        this.dateAdded = `${new Date().getDay()}.${new Date().getMonth()}. ${new Date().getFullYear()}`;
         this.UUID = userUUID;
+        this.timeStamp = `${new Date().getHours()}:${new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()}`;
     }
 }
 
@@ -104,15 +142,12 @@ const style = StyleSheet.create({
     screen: {
         marginHorizontal: 5,
         flex: 1,
-        backgroundColor: 'yellow',
         justifyContent: 'flex-end',
     },
     messagesArea: {
-        backgroundColor: 'red',
         flexGrow: 1,
     },
     inputArea: {
-        backgroundColor: '#11f340',
         flexDirection: 'row',
         padding: 5,
     },
@@ -131,14 +166,21 @@ const style = StyleSheet.create({
         fontStyle: 'italic',
     },
     message: {
-        marginVertical: 5,
+        marginVertical: 1,
         marginHorizontal: 5,
-        padding: 10,
+        padding: 5,
         borderRadius: 10,
+        backgroundColor: '#d4d4d4',
     },
     messageText: {
         fontSize: 16,
     },
-    date: {},
-    author: {},
+    date: {
+        alignSelf: 'center',
+        textAlign: 'center',
+    },
+    author: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
 });
