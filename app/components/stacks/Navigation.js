@@ -7,12 +7,14 @@ import MessagesScreen from '../../screens/MessagesScreen';
 import {ChoresStack} from './ChoresStack';
 import {AuthContext} from '../AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ThemeContext} from '../Themes';
 
 const Tab = createBottomTabNavigator();
 
 //Hlavní navigace v aplikaci v podobě záložek
 //Tento komponent zahrnuje všechny stacky, popř. jen obrazovky.
 export default function Navigation() {
+    const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
     return (
         <Tab.Navigator
@@ -20,18 +22,24 @@ export default function Navigation() {
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
-                    if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
-                    else if (route.name === 'Notes') iconName = focused ? 'note-multiple' : 'note-multiple-outline';
-                    else if (route.name === 'Messages') iconName = focused ? 'message-text' : 'message-text-outline';
-                    else if (route.name === 'Chores') iconName = focused ? 'calendar-month' : 'calendar-month-outline';
-                    else if (route.name === 'User') iconName = focused ? 'account-circle' : 'account-circle-outline';
+                    if (route.name === 'Home') {
+                        iconName = focused ? 'home' : 'home-outline';
+                    } else if (route.name === 'Notes') {
+                        iconName = focused ? 'note-multiple' : 'note-multiple-outline';
+                    } else if (route.name === 'Messages') {
+                        iconName = focused ? 'message-text' : 'message-text-outline';
+                    } else if (route.name === 'Chores') {
+                        iconName = focused ? 'calendar-month' : 'calendar-month-outline';
+                    } else if (route.name === 'User') {
+                        iconName = focused ? 'account-circle' : 'account-circle-outline';
+                    }
 
                     // You can return any component that you like here!
                     return <Icon name={iconName} size={size} color={color}/>;
                 },
             })}
             tabBarOptions={{
-                activeTintColor: '#40E0D0',
+                activeTintColor: mainColor,
                 inactiveTintColor: 'gray',
             }}
         >
