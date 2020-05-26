@@ -13,4 +13,4 @@ Only the most recent version is supported
 *mail to be added*
 
 So this is repo for school project. Which is somehthing I won't be updating frequently.  
-I'll see
+I'll see...
