@@ -14,7 +14,7 @@ My goal was to learn a new JS framework. In the end I went with React Native.
 This is a _React Native_ app.  
 This app was tested on Android only. No guarantee, that it'll work on iOS
 
-#### Dependencies  
+### Dependencies  
 - Node.js installed  
 - React Native installed  
     ````
@@ -24,7 +24,7 @@ This app was tested on Android only. No guarantee, that it'll work on iOS
 OR
 - An android device with USB debugging allowed  
 
-#### Follow these  
+### Follow these  
 1. Download this repo
 2. Start an emulator or Connect a device to your computer via USB cable
 3. In the root folder of this project open Terminal/Command prompt (where App.js is located)  
@@ -34,14 +34,21 @@ OR
     ````
 
 # Known Issues
-React sometimes throws EPERM error  
+#### When building app, React sometimes throws EPERM error  
 **To fix this:**  
-    1. Open Command Prompt in root folder of this project
+    1. Open Command Prompt in root folder of this project  
     2. Type in these  
         ````
-        cd android
-        gradlew clean
-        ````
+        a. cd android  
+        b. gradlew clean  
+        ````  
     3. Run the app  
 
 >For what I know, this only happens on Windows  
+
+#### Added notes do not show up if the list is empty  
+**To fix this**  
+    1. Restart the app  
+
+>This only happens after fresh install or wiping data  
+>The notes you added should be there, React possibly didn't updated the DOM
