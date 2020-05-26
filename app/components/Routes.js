@@ -19,11 +19,11 @@ export default function Routes({}) {
         AsyncStorage.getItem('user')
             .then(userString => {
                 if (userString) {
-                    // login();
+                    login();
                 }
                 setLoading(false);
             }).catch(err => {
-            console.log('err', err);
+            console.log('err v routes: ', err);
         });
     }, []);
 
