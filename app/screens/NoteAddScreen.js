@@ -7,9 +7,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 //TODO: Obrazovka pro upravování poznámek
 export default function NoteAddScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
+    const {user} = useContext(AuthContext);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    const {user} = useContext(AuthContext);
     const [parsedNotes, setParsedNotes] = useState([]);
 
     useEffect(() => {
