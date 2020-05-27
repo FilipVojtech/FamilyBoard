@@ -6,6 +6,8 @@ export const AuthContext = React.createContext({
     profilePicture: null,
     login: () => {
     },
+    loginMother: () => {
+    },
     loginChild: () => {
     },
     logout: () => {
@@ -32,6 +34,12 @@ export const AuthProvider = ({children}) => {
             user: user,
             login: () => {
                 let addedUser = new User('Dwayne', 'Johnson', true, 'bf68e9a7-b484-4f3a-8cbd-6d4c90c1587f');
+                setUsers([...users, addedUser]);
+                setUser(addedUser);
+                AsyncStorage.setItem('user', JSON.stringify(user));
+            },
+            loginMother: () => {
+                let addedUser = new User('Anežka', 'Česká', true, '1be0c7ac-7052-496b-8b48-93318e701766');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));

@@ -10,12 +10,13 @@ import {ThemeContext} from '../components/ThemesContext';
 //Obrazovka s odkazy na přihlašovací, nebo registrační obrazovky
 export default function LoginScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
-    const {login, loginChild} = useContext(AuthContext);
+    const {login, loginChild, loginMother} = useContext(AuthContext);
 
     return (
         <Center>
             <View>
-                <Button color={mainColor} title={'Přihlásit se jako dospělý'} onPress={() => login()}/>
+                <Button color={mainColor} title={'Přihlásit se jako matka'} onPress={() => loginMother()}/>
+                <Button color={mainColor} title={'Přihlásit se jako otec'} onPress={() => login()}/>
                 <Button color={mainColor} title={'Přihlásit se jako dítě'} onPress={() => loginChild()}/>
                 <Button color={mainColor} title={'Registrovat se'} onPress={() => navigation.navigate('Register')}/>
             </View>
