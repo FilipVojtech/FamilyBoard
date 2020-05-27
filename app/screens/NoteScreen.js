@@ -10,12 +10,12 @@ export default function NoteScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
     return (
         <React.Fragment>
+            <NoteList navigation={navigation}/>
             <Button
                 title={'Přidat poznámku'}
                 onPress={() => navigation.navigate('Add')}
                 color={mainColor}
             />
-            <NoteList navigation={navigation}/>
         </React.Fragment>
     );
 }

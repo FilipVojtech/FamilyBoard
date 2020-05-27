@@ -43,7 +43,7 @@ export default function NoteList(props) {
                 renderItem={({item}) => (
                     <TouchableOpacity
                         style={style.note}
-                        onPress={() => props.navigation.navigate('Edit')}
+                        onPress={() => props.navigation.navigate('Edit', item)}
                         onLongPress={() => {
                             if (user.isParent || item.user.UUID === user.UUID) {
                                 Alert.alert(

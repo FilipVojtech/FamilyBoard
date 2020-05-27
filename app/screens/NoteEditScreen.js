@@ -1,16 +1,15 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Text} from 'react-native';
+import {StyleSheet, View, TextInput, Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {AuthContext} from '../components/AuthProvider';
-import {Center} from '../components/Center';
 import {ThemeContext} from '../components/Themes';
 
-export default function NoteEditScreen(props, {navigation}) {
+export default function NoteEditScreen({route, navigation}) {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    const [parsedNotes, setParsedNotes] = useState([])
+    const [parsedNotes, setParsedNotes] = useState([]);
 
     useEffect(() => {
         AsyncStorage.getItem('notes')
@@ -20,11 +19,56 @@ export default function NoteEditScreen(props, {navigation}) {
     }, []);
 
     return (
-        <React.Fragment>
-            <Center>
-                <Text>Edituju</Text>
-            </Center>
-        </React.Fragment>
-    )
+        <View style={style.container}>
+            {/**
+             Textové pole pro zadání nadpisu
+             */}
+            <TextInput
+                style={style.title}
+                numberOfLines={1}
+                placeholder={'Nadpis (nepovinný)'}
+                onChangeText={string => setTitle(string)}
+                returnKeyType={'done'}
+                blurOnSubmit={true}
+                defaultValue={route.params.title}
+            />
+            {/**
+             Textové pole pro zadání textu poznámky
+             */}
+            <TextInput
+                autoFocus={true}
+                style={style.text}
+                multiline
+                textAlignVertical={'top'}
+                numberOfLines={1}
+                placeholder={'Sem něco napiš'}
+                onChangeText={string => setText(string)}
+                blurOnSubmit={true}
+                returnKeyType={'none'}
+                defaultValue={route.params.text}
+            />
+            <Button
+                title={'Uložit'}
+                onPress={() => {
+                    alert(`Zadaný text: ${title} | ${text}`);
+                    navigation.goBack();
+                }}/>
+        </View>
+    );
 }
 
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    title: {
+        borderBottomWidth: 1,
+    },
+    text: {
+        flexGrow: 1,
+    },
+    buttonArea: {},
+    saveButton: {
+        backgroundColor: 'black',
+    },
+});
