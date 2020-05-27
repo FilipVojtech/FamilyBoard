@@ -1,4 +1,4 @@
-import UserVerification from './app/components/UserVerification';
+import AppEnter from './app/components/AppEnter';
 
 //Hlavní soubor
-export default UserVerification;
+export default AppEnter;
