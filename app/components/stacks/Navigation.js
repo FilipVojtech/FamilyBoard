@@ -28,7 +28,7 @@ export default function Navigation() {
                         iconName = focused ? 'note-multiple' : 'note-multiple-outline';
                     } else if (route.name === 'Messages') {
                         iconName = focused ? 'message-text' : 'message-text-outline';
-                    } else if (route.name === 'Chores') {
+                    } else if (route.name === 'Calendar') {
                         iconName = focused ? 'calendar-month' : 'calendar-month-outline';
                     } else if (route.name === 'User') {
                         iconName = focused ? 'account-circle' : 'account-circle-outline';
@@ -44,7 +44,7 @@ export default function Navigation() {
             }}
         >
             <Tab.Screen options={{title: user.name}} name="User" component={UserStack}/>
-            <Tab.Screen options={{title: 'Kalendář'}} name='Chores' component={ChoresStack}/>
+            <Tab.Screen options={{title: 'Kalendář'}} name='Calendar' component={ChoresStack}/>
             <Tab.Screen options={{title: 'Domů'}} name="Home" component={HomeStack}/>
             <Tab.Screen options={{title: 'Poznámky'}} name="Notes" component={NotesStack}/>
             <Tab.Screen options={{title: 'Zprávy'}} name='Messages' component={MessagesScreen}/>
