@@ -9,7 +9,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from './Themes';
+import {ThemeContext} from './ThemesContext';
 import {AuthContext} from './AuthProvider';
 
 //Modul pro vytvoření listu poznámek z komponentu NoteItem

@@ -6,7 +6,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import {AuthContext} from '../components/AuthProvider';
-import {ThemeContext} from '../components/Themes';
+import {ThemeContext} from '../components/ThemesContext';
 
 //TODO: Obrazovka uživatele
 //Obsahuje profilový obrázek, jméno, ostatní členy rodiny, odkaz na obrazovku zdraví

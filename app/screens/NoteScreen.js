@@ -3,7 +3,7 @@ import {
     Button,
 } from 'react-native';
 import NoteList from '../components/NoteList';
-import {ThemeContext} from '../components/Themes';
+import {ThemeContext} from '../components/ThemesContext';
 
 //Obrazovka obsahující seznam všech poznámek a tlačítko pro přidání poznámky
 export default function NoteScreen({navigation}) {

@@ -5,7 +5,7 @@ export const ThemeContext = React.createContext({
     backgroundColor: '',
 });
 
-export const Themes = ({children}) => {
+export const ThemesContext = ({children}) => {
     return (
         <ThemeContext.Provider value={{
             mainColor: '#10c3ff', //40E0D0

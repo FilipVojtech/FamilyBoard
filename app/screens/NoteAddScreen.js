@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, StyleSheet, TextInput, View} from 'react-native';
-import {ThemeContext} from '../components/Themes';
+import {ThemeContext} from '../components/ThemesContext';
 import {AuthContext} from '../components/AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
 

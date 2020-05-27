@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, View, TextInput, Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {AuthContext} from '../components/AuthProvider';
-import {ThemeContext} from '../components/Themes';
+import {ThemeContext} from '../components/ThemesContext';
 
 export default function NoteEditScreen({route, navigation}) {
     const {mainColor} = useContext(ThemeContext);
@@ -49,6 +49,7 @@ export default function NoteEditScreen({route, navigation}) {
             />
             <Button
                 title={'Uložit'}
+                color={mainColor}
                 onPress={() => {
                     alert(`Zadaný text: ${title} | ${text}`);
                     navigation.goBack();

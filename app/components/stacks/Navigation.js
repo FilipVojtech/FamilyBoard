@@ -7,7 +7,7 @@ import MessagesScreen from '../../screens/MessagesScreen';
 import {ChoresStack} from './ChoresStack';
 import {AuthContext} from '../AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from '../Themes';
+import {ThemeContext} from '../ThemesContext';
 
 const Tab = createBottomTabNavigator();
 
