@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import {Themes} from './Themes';
 
 export const AuthContext = React.createContext({
     user: null,
@@ -48,9 +47,7 @@ export const AuthProvider = ({children}) => {
                 AsyncStorage.removeItem('user');
             },
         }}>
-            <Themes>
-                {children}
-            </Themes>
+            {children}
         </AuthContext.Provider>
     );
 };
