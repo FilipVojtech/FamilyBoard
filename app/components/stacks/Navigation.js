@@ -4,7 +4,7 @@ import {HomeStack} from './HomeStack';
 import {NotesStack} from './NotesStack';
 import {UserStack} from '../UserStack';
 import MessagesScreen from '../../screens/MessagesScreen';
-import {ChoresStack} from './ChoresStack';
+import {CalendarStack} from './CalendarStack';
 import {AuthContext} from '../AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeContext} from '../ThemesContext';
@@ -18,7 +18,7 @@ export default function Navigation() {
     const {user} = useContext(AuthContext);
     return (
         <Tab.Navigator
-            initialRouteName='Home'
+            initialRouteName='User'
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
@@ -44,7 +44,7 @@ export default function Navigation() {
             }}
         >
             <Tab.Screen options={{title: user.name}} name="User" component={UserStack}/>
-            <Tab.Screen options={{title: 'Kalendář'}} name='Calendar' component={ChoresStack}/>
+            <Tab.Screen options={{title: 'Kalendář'}} name='Calendar' component={CalendarStack}/>
             <Tab.Screen options={{title: 'Domů'}} name="Home" component={HomeStack}/>
             <Tab.Screen options={{title: 'Poznámky'}} name="Notes" component={NotesStack}/>
             <Tab.Screen options={{title: 'Zprávy'}} name='Messages' component={MessagesScreen}/>

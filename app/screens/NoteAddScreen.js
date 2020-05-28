@@ -57,7 +57,7 @@ export default function NoteAddScreen({navigation}) {
                 <Button
                     title={'Přidat'}
                     color={mainColor}
-                    disabled={text == false} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku
+                    disabled={text === ''} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku
                     onPress={() => {
                         {/**
                          Vyvoří poznámku jako objekt
@@ -99,7 +99,9 @@ const style = StyleSheet.create({
         flex: 1,
     },
     title: {
+        fontSize: 20,
         borderBottomWidth: 1,
+        borderColor: '#b8b8b8',
     },
     text: {
         flexGrow: 1,
