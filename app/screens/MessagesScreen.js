@@ -1,12 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {
-    View,
-    TextInput,
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    FlatList,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeContext} from '../components/ThemesContext';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -82,7 +75,7 @@ export default function MessagesScreen() {
                     onChangeText={text => {
                         setMessage(text);
                     }}
-                    placeholder='Type something...'
+                    placeholder='Napiš něco'
                 />
 
                 {/**
