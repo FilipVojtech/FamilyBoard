@@ -1,11 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {
-    Alert,
-    FlatList,
-    StyleSheet,
-    Text, TouchableOpacity,
-    View,
-} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -106,6 +100,8 @@ const style = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         justifyContent: 'space-around',
+        borderWidth: 2,
+        borderColor: '#dcdcdc',
 
         marginVertical: 5,
         marginHorizontal: 5,
