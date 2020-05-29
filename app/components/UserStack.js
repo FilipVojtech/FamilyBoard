@@ -26,7 +26,7 @@ export const UserStack = ({}) => {
 
 const headerLogOut = (logout) => (
     <TouchableOpacity
-        style={{marginRight: 10}}
+        style={{padding: 10, marginRight: 5}}
         onPress={logout}>
         <Text style={{fontSize: 16, color: 'red'}}>Odhlásit se</Text>
     </TouchableOpacity>
