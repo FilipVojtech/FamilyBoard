@@ -54,6 +54,7 @@ export default function EventAddScreen({route, navigation}) {
                     onChangeText={string => setTitle(string)}
                     returnKeyType={'done'}
                     blurOnSubmit={true}
+                    autoFocus={true}
                 />
                 <View style={style.component}>
                     <View style={style.viewRow}>
