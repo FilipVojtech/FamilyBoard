@@ -5,7 +5,6 @@ import {ThemeContext} from '../components/ThemesContext';
 import AsyncStorage from '@react-native-community/async-storage';
 import {AuthContext} from '../components/AuthProvider';
 
-//TODO:
 //Všichni členové domácnosti zde chatují ve skupinové koncerzaci
 export default function MessagesScreen() {
     const {user} = useContext(AuthContext);
