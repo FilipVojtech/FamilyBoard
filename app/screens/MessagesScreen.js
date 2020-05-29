@@ -19,6 +19,12 @@ export default function MessagesScreen() {
             });
     }, []);
 
+    /**
+     * Generování seznamu zpráv, tak aby nové byly naspodu
+     * proto vlastnost inverted=true
+     *
+     * Podmíněné stylování musí být dané do elementu, protože jiank nafungují podmínky
+     */
     return (
         <View style={style.screen}>
             <FlatList
@@ -72,10 +78,10 @@ export default function MessagesScreen() {
                     style={style.textInputBox}
                     numberOfLines={2}
                     multiline={true}
+                    placeholder='Napiš něco'
                     onChangeText={text => {
                         setMessage(text);
                     }}
-                    placeholder='Napiš něco'
                 />
 
                 {/**
@@ -120,6 +126,10 @@ export default function MessagesScreen() {
     );
 }
 
+
+/**
+ * Classa pro vytvoření objektu zprávy
+ */
 class Message {
     constructor(key, author, message, userUUID) {
         this.key = key;

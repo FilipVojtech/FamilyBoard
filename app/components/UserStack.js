@@ -10,6 +10,12 @@ export const UserStack = ({}) => {
     const Stack = createStackNavigator();
     const {user, logout} = useContext(AuthContext);
 
+    /**
+     * Obrazovka aktivní uživatele,
+     * Zobrazuje se tu jeho jméno a popř. profilový obrázek
+     *
+     * Dále je tu také tlačítko pro přepnutí na jeho zdravotní kartu
+     */
     return (
         <Stack.Navigator>
             <Stack.Screen

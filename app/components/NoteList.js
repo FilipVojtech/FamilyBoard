@@ -39,6 +39,9 @@ export default function NoteList(props) {
                         style={style.note}
                         onPress={() => props.navigation.navigate('Edit', item)}
                         onLongPress={() => {
+                            /**
+                             * Pokud je uživatel rodič, nebo vytvořil poznámku, tak ji může smazat
+                             */
                             if (user.isParent || item.user.UUID === user.UUID) {
                                 Alert.alert(
                                     'Jsi si jistý?',
@@ -72,6 +75,7 @@ export default function NoteList(props) {
                         </View>
                         {/**
                          Zaškrtávací políčko, které uživateli říká, jestli je poznámka splněna
+                         Zaškrktnout ho může kdokoliv
                          **/}
                         <TouchableOpacity
                             style={style.noteSettings}

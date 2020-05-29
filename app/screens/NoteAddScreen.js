@@ -5,6 +5,10 @@ import {AuthContext} from '../components/AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
 
 //TODO: Obrazovka pro upravování poznámek
+/**
+ * Zde se generuje seznam poznámek
+ * Společně s metodami pro správu poznámek
+ **/
 export default function NoteAddScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
@@ -47,12 +51,11 @@ export default function NoteAddScreen({navigation}) {
                 returnKeyType={'none'}
             />
             {
-                //TODO: Tlačítko
                 /*<Icon name={'content-save'} style={style.saveButton} color={mainColor} size={64}/>*/
-                /**
-                 * Tlačítko je zmáčknutelné, pouze pokud hodnota v proměnné text je truthy
-                 **/
             }
+            {/**
+             Pokud je prázdné tělo poznámky, tak nastav tlačítko jako neoktivní
+             */}
             <View style={style.buttonArea}>
                 <Button
                     title={'Přidat'}

@@ -44,15 +44,19 @@ export default function HomeScreen() {
         'Život je série tisíců malých zázraků. Všímej si jich',
     ];
 
+
+    /**
+     * Vykreslení pozdravu a citátu
+     */
     return (
         <View style={style.container}>
             <View>
                 <Text style={style.greet}>{greets[Math.floor(Math.random() * greets.length)]}, {user.volaci}</Text>
                 <Text style={style.quote}>{quotes[Math.floor(Math.random() * quotes.length)]}</Text>
             </View>
-            <View>
-                <Text style={style.uiText}>Poslední přidaná poznámka</Text>
-            </View>
+            {/*<View>*/}
+            {/*    <Text style={style.uiText}>Poslední přidaná poznámka</Text>*/}
+            {/*</View>*/}
         </View>
     );
 }

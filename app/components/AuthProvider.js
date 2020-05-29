@@ -12,14 +12,15 @@ export const AuthContext = React.createContext({
     logout: () => {
     },
 });
-
+/**
+ * Uživatelský kontext
+ * V celé aplikaci dělá dostupné metody pro přihlášení a odhlašování
+ */
 //Dummy data pro uživatele
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
 
     /**
-     * Pole je zde použito jen pro účely vývoje
-
      * isParent: true: uživatel je považován za rodiče/zákoného zástupce a má plná oprávnění
      *           false: uživatel je považován za dítě a nemá plná oprávnění
      */
@@ -66,7 +67,6 @@ export class User {
         this.surname = surname;
         this.isParent = isParent;
         this.UUID = UUID;
-        this.profilePicture = null;
 
         this.diseases = diseases;
         this.allergies = allergies;

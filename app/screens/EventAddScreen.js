@@ -4,6 +4,15 @@ import {Button, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} fro
 import {ThemeContext} from '../components/ThemesContext';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
+/**
+ * Proměnné udžující stav vytvářené události
+ *
+ * Při kliknutí na počáteční datum se otevře nativní okno a uživatel zadá nové datum
+ * Pokud uživatel vybral nové, tak se uloží do proměnné
+ *
+ * Přepínač nastavuje, jestli je událost celodenní
+ * Jinak se kontroluje, jetli konečné datum není před začátečním
+ */
 export default function EventAddScreen({route, navigation}) {
     const {events, setEvents} = useContext(CalendarContext);
     const {mainColor} = useContext(ThemeContext);
@@ -77,9 +86,7 @@ export default function EventAddScreen({route, navigation}) {
                                 setWhatSetting(timeFrom);
                                 showTimepicker();
                             }}>
-                                <Text
-                                    style={style.uiText}
-                                >
+                                <Text style={style.uiText}>
                                     Od {timeFrom.getHours() < 10 ? `0${timeFrom.getHours()}` : timeFrom.getHours()}:{timeFrom.getMinutes() < 10 ? `0${timeFrom.getMinutes()}` : timeFrom.getMinutes()}
                                 </Text>
                             </TouchableOpacity>
@@ -88,14 +95,16 @@ export default function EventAddScreen({route, navigation}) {
                                 setWhatSetting(timeTo);
                                 showTimepicker();
                             }}>
-                                <Text
-                                    style={style.uiText}
-                                >
+                                <Text style={style.uiText}>
                                     Do {timeTo.getHours() < 10 ? `0${timeTo.getHours()}` : timeTo.getHours()}:{timeTo.getMinutes() < 10 ? `0${timeTo.getMinutes()}` : timeTo.getMinutes()}
                                 </Text>
                             </TouchableOpacity>
                         </View>
                     </View>
+                    {/**
+                     * Kontrola časů
+                     * Vypisování chyby-
+                     */}
                     {isAllDay || (timeFrom - timeTo < 0) ? null :
                         <Text style={[style.uiText, {textAlign: 'right'}]}>Událost nemůže začít po skončení</Text>}
                 </View>

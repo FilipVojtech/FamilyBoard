@@ -11,8 +11,12 @@ import {ThemeContext} from '../ThemesContext';
 
 const Tab = createBottomTabNavigator();
 
-//Hlavní navigace v aplikaci v podobě záložek
-//Tento komponent zahrnuje všechny stacky, popř. jen obrazovky.
+/**
+ * Hlavní navigace v aplikaci v podobě záložek
+ * Tento komponent zahrnuje všechny stacky, popř. jen obrazovky.
+ *
+ * Podle aktivní cesty v navigaci nastaví hlavní barvu na kartu, kde se uživatel nachází
+ */
 export default function Navigation() {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);

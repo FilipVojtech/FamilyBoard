@@ -11,6 +11,11 @@ export default function CalendarScreen({navigation}) {
     const {markedDates} = useContext(CalendarContext);
     const [selectedDay, setSelectedDay] = useState(new Date());
 
+    /**
+     * Kalendář
+     * Po kliknutí na datum se vybere datum a přepne se výpis událostí
+     * Po kliknutí na vybrané datum znovu se začne vytvářet událost
+     */
     return (
         <React.Fragment>
             {/*<View style={{flexDirection: 'row'}}>*/}
@@ -20,7 +25,6 @@ export default function CalendarScreen({navigation}) {
                 horizontal={true}
                 pagingEnabled={true}
                 firstDay={1}
-
                 markedDates={{markedDates}.markedDates}
                 theme={{
                     todayTextColor: mainColor,

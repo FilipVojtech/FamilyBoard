@@ -11,7 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 //Před startem se ukáže načítání
 //Začne se hledat uživatel
 export default function Routes({}) {
-    const {user, login} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Routes({}) {
         AsyncStorage.getItem('user')
             .then(userString => {
                 if (userString) {
-                    login();
+                    //login();
                 }
                 setLoading(false);
             }).catch(err => {
@@ -27,6 +27,7 @@ export default function Routes({}) {
         });
     }, []);
 
+    //Zatímco hledá uživatele, tak vykresli načítání
     if (loading) {
         return (
             <Center>

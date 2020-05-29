@@ -6,12 +6,17 @@ import EventAddScreen from '../../screens/EventAddScreen';
 export const CalendarStack = ({}) => {
     const Stack = createStackNavigator();
 
-    //Navigační stack pro záložku rutin
+    //Navigační stack pro záložku kalendáře
     return (
         <Stack.Navigator>
-            <Stack.Screen options={{headerShown: false}} name={'Home'} component={CalendarScreen}/>
-            <Stack.Screen options={{headerTitle: 'Vytvořit novou událost'}} name={'AddEvent'}
-                          component={EventAddScreen}/>
+            <Stack.Screen
+                options={{headerShown: false}}
+                name={'Home'}
+                component={CalendarScreen}/>
+            <Stack.Screen
+                options={{headerTitle: 'Vytvořit novou událost'}}
+                name={'AddEvent'}
+                component={EventAddScreen}/>
         </Stack.Navigator>
     );
 };
