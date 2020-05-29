@@ -23,8 +23,10 @@ This app was tested on Android only. No guarantee, that it'll work on iOS
 - Android Studio with at least one Virtual device configured  
 OR
 - An android device with USB debugging allowed  
-- ANDROID_SDK_ROOT defined in PATH  
-    It is usually loccated in  `C:\Users\yourname\AppData\Local\Android\sdk`
+- ANDROID_SDK_ROOT defined in PATH, preferably follow [this tutiorual](https://stackoverflow.com/a/48155800)  
+    It is usually loccated in  `C:\Users\YourName\AppData\Local\Android\Sdk`  
+    Change YourName to a valid name  
+- JDK installed
 
 ### Follow these  
 1. Download this repo
@@ -32,8 +34,8 @@ OR
 3. In the root folder of this project open Terminal/Command prompt (where App.js is located)  
 4. Run the React Native project  
     ````
-    npm i
-    react-native run-android
+    npm i  
+    react-native run-android  
     ````
 
 # Known Issues
