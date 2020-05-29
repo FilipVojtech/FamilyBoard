@@ -57,7 +57,7 @@ export default function NoteAddScreen({navigation}) {
                 <Button
                     title={'Přidat'}
                     color={mainColor}
-                    disabled={text === ''} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku
+                    disabled={text == false} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku
                     onPress={() => {
                         {/**
                          Vyvoří poznámku jako objekt
@@ -65,7 +65,13 @@ export default function NoteAddScreen({navigation}) {
                          Nakonec se vrátí na předchozí obrazovku
                          **/
                         }
-                        const createdNote = new Note(title, text, user, parsedNotes);
+                        const strippedUser = {
+                            name: user.name,
+                            surname: user.surname,
+                            isParent: user.isParent,
+                            UUID: user.UUID,
+                        };
+                        const createdNote = new Note(title, text, strippedUser, parsedNotes);
                         if (parsedNotes == null) {
                             AsyncStorage.setItem('notes', JSON.stringify([createdNote]));
                         } else {
