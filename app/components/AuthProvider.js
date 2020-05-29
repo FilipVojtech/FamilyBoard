@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export const AuthContext = React.createContext({
     user: null,
-    profilePicture: null,
     login: () => {
     },
     loginMother: () => {
