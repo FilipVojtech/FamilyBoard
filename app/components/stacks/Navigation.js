@@ -18,7 +18,7 @@ export default function Navigation() {
     const {user} = useContext(AuthContext);
     return (
         <Tab.Navigator
-            initialRouteName='User'
+            initialRouteName='Home'
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
