@@ -1,26 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {CalendarList, LocaleConfig} from 'react-native-calendars';
 import {ThemeContext} from '../components/ThemesContext';
 import {CalendarContext} from '../components/CalendarContext';
+import Agenda from '../components/Agenda';
 
 //Obrazovka Rutin
 //TODO: Kalendář, kde rodiče mohou spravovat rutiny sobě a dětem
 export default function CalendarScreen({navigation}) {
     const {mainColor} = useContext(ThemeContext);
-    const {events, markedDates} = useContext(CalendarContext);
-
-    LocaleConfig.locales['cz'] = {
-        monthNames: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
-        monthNamesShort: ['Led', 'Úno', 'Bře', 'Dub', 'Kvě', 'Čvn', 'Čvc', 'Srp', 'Zář', 'Říj', 'Lis', 'Pro'],
-        dayNames: ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'],
-        dayNamesShort: ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'],
-        today: 'Dnes',
-    };
-    LocaleConfig.defaultLocale = 'cz';
-
-    console.log();
-    console.log(markedDates);
-    console.log(...markedDates);
+    const {markedDates} = useContext(CalendarContext);
+    const [selectedDay, setSelectedDay] = useState(new Date());
 
     return (
         <React.Fragment>
@@ -31,15 +20,32 @@ export default function CalendarScreen({navigation}) {
                 horizontal={true}
                 pagingEnabled={true}
                 firstDay={1}
-                markedDates={markedDates}
+
+                markedDates={{markedDates}.markedDates}
                 theme={{
                     todayTextColor: mainColor,
                     dotColor: mainColor,
+                    selectedDayBackgroundColor: '#00adf5',
+                    selectedDayTextColor: '#ffffff',
                 }}
                 onDayPress={(day) => {
-                    navigation.navigate('AddEvent', day);
+                    setSelectedDay(day.timestamp);
+                    if (selectedDay === day.timestamp) {
+                        navigation.navigate('AddEvent', day);
+                    }
                 }}
             />
+            <Agenda selectedDay={selectedDay}/>
         </React.Fragment>
     );
 }
+
+//Překlad kalendáře
+LocaleConfig.locales['cz'] = {
+    monthNames: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
+    monthNamesShort: ['Led', 'Úno', 'Bře', 'Dub', 'Kvě', 'Čvn', 'Čvc', 'Srp', 'Zář', 'Říj', 'Lis', 'Pro'],
+    dayNames: ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'],
+    dayNamesShort: ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'],
+    today: 'Dnes',
+};
+LocaleConfig.defaultLocale = 'cz';

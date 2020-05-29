@@ -5,25 +5,25 @@ import {ThemeContext} from '../components/ThemesContext';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function EventAddScreen({route, navigation}) {
-    const {setEvents} = useContext(CalendarContext);
+    const {events, setEvents} = useContext(CalendarContext);
     const {mainColor} = useContext(ThemeContext);
 
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
-    const [whatSetting, setWhatSetting] = useState('date');
+    const [whatSetting, setWhatSetting] = useState(date);
 
     const [title, setTitle] = useState('');
     const [isAllDay, setIsAllDay] = useState(false);
     const [date, setDate] = useState(new Date(route.params.timestamp));
-    const [timeFrom, setTimeFrom] = useState(new Date());
-    const [timeTo, setTimeTo] = useState(new Date());
+    const [timeFrom, setTimeFrom] = useState(new Date(date));
+    const [timeTo, setTimeTo] = useState(new Date(date));
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
-        if (whatSetting === 'timeFrom') {
+        if (whatSetting === timeFrom) {
             setTimeFrom(currentDate);
-        } else if (whatSetting === 'timeTo') {
+        } else if (whatSetting === timeTo) {
             setTimeTo(currentDate);
         } else {
             setDate(new Date(currentDate));
@@ -36,12 +36,10 @@ export default function EventAddScreen({route, navigation}) {
     };
 
     const showDatepicker = () => {
-        setWhatSetting('date');
         showMode('date');
     };
 
-    const showTimepicker = (whatSetting) => {
-        setWhatSetting(whatSetting);
+    const showTimepicker = () => {
         showMode('time');
     };
 
@@ -49,9 +47,6 @@ export default function EventAddScreen({route, navigation}) {
     return (
         <View>
             <View style={style.container}>
-                {/**
-                 Textové pole pro zadání názvu
-                 */}
                 <TextInput
                     style={[style.component, style.title]}
                     multiline
@@ -70,11 +65,17 @@ export default function EventAddScreen({route, navigation}) {
                             }}/>
                     </View>
                     <View style={style.viewRow}>
-                        <TouchableOpacity onPress={() => showDatepicker()}>
+                        <TouchableOpacity onPress={() => {
+                            setWhatSetting(date);
+                            showDatepicker();
+                        }}>
                             <Text style={style.uiText}>{date.toDateString()}</Text>
                         </TouchableOpacity>
                         <View style={[style.viewRow, isAllDay ? {display: 'none'} : {display: 'flex'}]}>
-                            <TouchableOpacity onPress={() => showTimepicker('timeFrom')}>
+                            <TouchableOpacity onPress={() => {
+                                setWhatSetting(timeFrom);
+                                showTimepicker();
+                            }}>
                                 <Text
                                     style={style.uiText}
                                 >
@@ -82,7 +83,10 @@ export default function EventAddScreen({route, navigation}) {
                                 </Text>
                             </TouchableOpacity>
                             <Text style={style.uiText}>-</Text>
-                            <TouchableOpacity onPress={() => showTimepicker('timeTo')}>
+                            <TouchableOpacity onPress={() => {
+                                setWhatSetting(timeTo);
+                                showTimepicker();
+                            }}>
                                 <Text
                                     style={style.uiText}
                                 >
@@ -96,7 +100,7 @@ export default function EventAddScreen({route, navigation}) {
                 </View>
                 {show && (
                     <DateTimePicker
-                        value={whatSetting === 'date' ? date : whatSetting === 'timeFrom' ? timeFrom : timeTo}
+                        value={whatSetting}
                         mode={mode}
                         is24Hour={true}
                         display="default"
@@ -115,7 +119,8 @@ export default function EventAddScreen({route, navigation}) {
                              Nakonec se vrátí na předchozí obrazovku
                              **/
                             }
-                            const createdEvent = new Event(title, date, isAllDay);
+                            console.log(events);
+                            const createdEvent = new Event(events, title, date, isAllDay, timeFrom, timeTo, date.valueOf());
                             setEvents(createdEvent);
                             navigation.goBack();
                         }}
@@ -127,14 +132,17 @@ export default function EventAddScreen({route, navigation}) {
 }
 
 class Event {
-    constructor(title, date, isAllDay) {
-        this.marked = true;
+    constructor(events, title, date, isAllDay, from, to, timestamp) {
+        this.id = (events == null || events.length === 0) ? 0 : events[events.length - 1].id + 1;
         this.title = title;
         this.isAllDay = isAllDay;
+        this.from = `${from.getHours() < 10 ? `0${from.getHours()}` : from.getHours()}:${from.getMinutes() < 10 ? `0${from.getMinutes()}` : from.getMinutes()}`;
+        this.to = `${to.getHours() < 10 ? `0${to.getHours()}` : to.getHours()}:${to.getMinutes() < 10 ? `0${to.getMinutes()}` : to.getMinutes()}`;
         this.year = date.getFullYear();
         this.month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
         this.date = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
         this.dateString = `${this.year}-${this.month}-${this.date}`;
+        this.timestamp = timestamp;
     }
 }
 
