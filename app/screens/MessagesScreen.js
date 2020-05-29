@@ -34,7 +34,8 @@ export default function MessagesScreen() {
                             } : {
                                 alignItems: 'flex-start',
                                 marginRight: 50,
-                            },
+                            }, (index < messages.length - 1 && messages[index + 1].UUID === item.UUID) ?
+                                null : {marginTop: 10},
                         ]}>
                         {/*Date added*/}
                         {(index < messages.length - 1 && messages[index + 1].dateAdded === item.dateAdded) ?
