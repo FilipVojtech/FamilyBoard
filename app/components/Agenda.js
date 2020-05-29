@@ -22,7 +22,7 @@ export default function Agenda(props) {
                 keyExtractor={item => item.id.toString()}
                 renderItem={({item}) => (
                     <View>
-                        {(props.selectedDay - item.timestamp) === 0 ? <Note item={item}/> : null}
+                        {(props.selectedDay - item.timestamp) === 0 ? <Event item={item}/> : null}
                     </View>
                 )}
             />
@@ -30,7 +30,7 @@ export default function Agenda(props) {
     );
 }
 
-const Note = (props) => (
+const Event = (props) => (
     <View style={style.agendaItem}>
         <Text style={[style.uiText, style.title]}>{props.item.title}</Text>
         <Text style={style.uiText}>{props.item.isAllDay ? 'Celodenní' : `${props.item.from} - ${props.item.to}`}</Text>
