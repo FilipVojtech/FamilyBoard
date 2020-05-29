@@ -46,8 +46,13 @@ export default function HomeScreen() {
 
     return (
         <View style={style.container}>
-            <Text style={style.greet}>{greets[Math.floor(Math.random() * greets.length)]}, {user.name}</Text>
-            <Text style={style.quote}>{quotes[Math.floor(Math.random() * quotes.length)]}</Text>
+            <View>
+                <Text style={style.greet}>{greets[Math.floor(Math.random() * greets.length)]}, {user.volaci}</Text>
+                <Text style={style.quote}>{quotes[Math.floor(Math.random() * quotes.length)]}</Text>
+            </View>
+            <View>
+                <Text style={style.uiText}>Poslední přidaná poznámka</Text>
+            </View>
         </View>
     );
 }
@@ -66,5 +71,10 @@ const style = StyleSheet.create({
         textAlign: 'center',
         marginHorizontal: 20,
         marginVertical: 10,
+    },
+    uiText: {
+        fontSize: 16,
+        textAlignVertical: 'center',
+        margin: 5,
     },
 });
