@@ -32,19 +32,19 @@ export const AuthProvider = ({children}) => {
         <AuthContext.Provider value={{
             user: user,
             login: () => {
-                let addedUser = new User('Dwayne', 'Johnson', true, 'bf68e9a7-b484-4f3a-8cbd-6d4c90c1587f');
+                let addedUser = new User('Dwayne', 'Dwayne', 'Johnson', true, 'bf68e9a7-b484-4f3a-8cbd-6d4c90c1587f');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));
             },
             loginMother: () => {
-                let addedUser = new User('Anežka', 'Česká', true, '1be0c7ac-7052-496b-8b48-93318e701766');
+                let addedUser = new User('Anežka', 'Anežko', 'Česká', true, '1be0c7ac-7052-496b-8b48-93318e701766');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));
             },
             loginChild: () => {
-                let addedUser = new User('Francis', 'z Assisi', false, '2f4a7080-4605-455b-a3ea-2ad686dd54d1');
+                let addedUser = new User('Francis', 'Francisi', 'z Assisi', false, '2f4a7080-4605-455b-a3ea-2ad686dd54d1');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
                 AsyncStorage.setItem('user', JSON.stringify(user));
@@ -60,8 +60,9 @@ export const AuthProvider = ({children}) => {
 };
 
 export class User {
-    constructor(name, surname, isParent, UUID, diseases, allergies, contact, medication) {
+    constructor(name, volaci, surname, isParent, UUID, diseases, allergies, contact, medication) {
         this.name = name;
+        this.volaci = volaci;
         this.surname = surname;
         this.isParent = isParent;
         this.UUID = UUID;
