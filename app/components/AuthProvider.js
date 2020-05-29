@@ -60,11 +60,16 @@ export const AuthProvider = ({children}) => {
 };
 
 export class User {
-    constructor(name, surname, isParent, UUID) {
+    constructor(name, surname, isParent, UUID, diseases, allergies, contact, medication) {
         this.name = name;
         this.surname = surname;
         this.isParent = isParent;
         this.UUID = UUID;
         this.profilePicture = null;
+
+        this.diseases = diseases;
+        this.allergies = allergies;
+        this.contact = contact;
+        this.medication = medication;
     }
 }
