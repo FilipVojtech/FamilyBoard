@@ -26,7 +26,7 @@ OR
 - ANDROID_SDK_ROOT defined in PATH, preferably follow [this tutiorual](https://stackoverflow.com/a/48155800)  
     It is usually loccated in  `C:\Users\YourName\AppData\Local\Android\Sdk`  
     Change YourName to a valid name  
-- adb defined in PATH
+- adb defined in PATH  
 - JDK installed
 
 ### Follow these  
