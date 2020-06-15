@@ -23,7 +23,7 @@ This app was tested on Android only. No guarantee, that it'll work on iOS
 - Android Studio with at least one Virtual device configured  
 OR
 - An android device with USB debugging allowed  
-- ANDROID_SDK_ROOT defined in PATH, preferably follow [this tutiorual](https://stackoverflow.com/a/48155800)  
+- ANDROID_SDK_ROOT defined in PATH, preferably follow [this tutorial](https://stackoverflow.com/a/48155800)  
     It is usually loccated in  `C:\Users\YourName\AppData\Local\Android\Sdk`  
     Change YourName to a valid name  
 - adb defined in PATH  
