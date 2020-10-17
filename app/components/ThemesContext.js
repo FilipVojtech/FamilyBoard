@@ -9,9 +9,7 @@ export const ThemeContext = React.createContext({
  */
 export const ThemesContext = ({children}) => {
     return (
-        <ThemeContext.Provider value={{
-            mainColor: '#10c3ff', //40E0D0
-        }}>
+        <ThemeContext.Provider value={{mainColor: '#10c3ff', /*40E0D0, 10c3ff*/}}>
             {children}
         </ThemeContext.Provider>
     );
