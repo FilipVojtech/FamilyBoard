@@ -1,8 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import NoteScreen from '../../screens/NoteScreen';
-import NoteAddScreen from '../../screens/NoteAddScreen';
-import NoteEditScreen from '../../screens/NoteEditScreen';
+import NoteScreen from '../screens/NoteScreen';
+import NoteAddScreen from '../screens/NoteAddScreen';
+import NoteEditScreen from '../screens/NoteEditScreen';
 
 //Navigační stack pro záložku poznámek
 export const NotesStack = ({}) => {
