@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,17 +14,53 @@ export default function NoteList(props) {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        AsyncStorage.getItem('notes')
-            .then(value => {
-                setNotes(JSON.parse(value));
-            });
+        AsyncStorage.getItem('notes').then(value => {
+            setNotes(JSON.parse(value));
+        });
     });
+
+    function deleteNote(item) {
+        /**
+         * Pokud je uživatel rodič, nebo vytvořil poznámku, tak ji může smazat
+         */
+        if (user.isParent || item.user.UUID === user.UUID) {
+            Alert.alert(
+                'Jsi si jistý?',
+                'Opravdu chceš vymazat tuto poznámku? \nNelze ji pak vrátit zpět',
+                [
+                    {
+                        text: 'Smazat',
+                        onPress: () => {
+                            for (let i = 0; i < notes.length; i++) {
+                                if (notes[i].id === item.id) {
+                                    notes.splice(i, 1);
+                                }
+                            }
+                            AsyncStorage.setItem('notes', JSON.stringify(notes));
+                        },
+                    },
+                    {
+                        text: 'Nemazat!',
+                    },
+                ],
+            );
+        } else {
+            Alert.alert(
+                'Nedostatečná opravnění',
+                'Tuhle poznámku nemůžeš smazat, protože ji vytvořil rodič',
+            );
+        }
+
+    }
+
 
     if (notes == null || notes.length === 0) {
         return (
             <Center>
                 <Text style={{textAlign: 'center'}}>Nic tu není</Text>
-                <Text style={{textAlign: 'center'}}>Pro přidání, klepněte na tlačítko přidat poznámku</Text>
+                <Text style={{textAlign: 'center'}}>
+                    Pro přidání, klepněte na tlačítko přidat poznámku
+                </Text>
             </Center>
         );
     }
@@ -38,39 +74,15 @@ export default function NoteList(props) {
                     <TouchableOpacity
                         style={style.note}
                         onPress={() => props.navigation.navigate('Edit', item)}
-                        onLongPress={() => {
-                            /**
-                             * Pokud je uživatel rodič, nebo vytvořil poznámku, tak ji může smazat
-                             */
-                            if (user.isParent || item.user.UUID === user.UUID) {
-                                Alert.alert(
-                                    'Jsi si jistý?',
-                                    'Opravdu chceš vymazat tuto poznámku? \nNelze ji pak vrátit zpět',
-                                    [{
-                                        text: 'Jsem si jistý',
-                                        onPress: () => {
-                                            for (let i = 0; i < notes.length; i++) {
-                                                if (notes[i].id === item.id) {
-                                                    notes.splice(i, 1);
-                                                }
-                                            }
-                                            AsyncStorage.setItem('notes', JSON.stringify(notes));
-                                        },
-                                    }, {
-                                        text: 'Nemazat!',
-                                    }],
-                                );
-                            } else {
-                                Alert.alert(
-                                    'Nedostatečná opravnění',
-                                    'Poznámku, kterou vytvořil rodič, může smazat jen rodič.',
-                                );
-                            }
-                        }}>
+                        onLongPress={() => deleteNote(item)}>
                         <View style={style.noteText}>
                             <Text style={style.unimportant}>Přidáno: {item.dateAdded}</Text>
-                            {item.title ? (<Text style={style.title}>{item.title}</Text>) : null}
-                            <Text style={style.unimportant}>{item.user.name} {item.user.surname}</Text>
+                            {item.title ? (
+                                <Text style={style.title}>{item.title}</Text>
+                            ) : null}
+                            <Text style={style.unimportant}>
+                                {item.user.name} {item.user.surname}
+                            </Text>
                             <Text style={style.text}>{item.text}</Text>
                         </View>
                         {/**
@@ -88,8 +100,14 @@ export default function NoteList(props) {
                                 AsyncStorage.setItem('notes', JSON.stringify(notes));
                             }}>
                             <Icon
-                                name={item.isDone ? 'checkbox-marked-circle-outline' : 'checkbox-blank-circle-outline'}
-                                size={34} color={mainColor}/>
+                                name={
+                                    item.isDone
+                                        ? 'checkbox-marked-circle-outline'
+                                        : 'checkbox-blank-circle-outline'
+                                }
+                                size={34}
+                                color={mainColor}
+                            />
                         </TouchableOpacity>
                     </TouchableOpacity>
                 )}

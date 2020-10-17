@@ -18,7 +18,7 @@ export default function HomeScreen() {
         'Dávej si pozor na svá slova. Mohou být odpuštěna, ale ne zapomenuta.',
         'Dělat, co máš rád, znamená být svobodný.\n' +
         'Mít rád, co děláš, znamená být šťastný.',
-        'Být šťastný neznamená, že je všechno perfektní. Znamená to, ses rozhodl užívat si života i přes všechny jeho nedokonalosti.',
+        'Být šťastný neznamená, že je všechno perfektní. Znamená to, že ses rozhodl užívat si života i přes všechny jeho nedokonalosti.',
         'Jediný limit jsi ty sám.',
         'Každý je génius, ale pokud budete posuzovat rybu podle její schopnosti vylézt na strom, bude celý svůj život žít s vědomím, že je neschopná.',
         'Konej dobro a dobro se ti vrátí.',

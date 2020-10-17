@@ -12,6 +12,8 @@ export default function LoginScreen({navigation}) {
     return (
         <Center>
             <View>
+            </View>
+            <View>
                 <Button color={mainColor} title={'Přihlásit se jako otec'} onPress={() => login()}/>
                 <Button color={mainColor} title={'Přihlásit se jako matka'} onPress={() => loginMother()}/>
                 <Button color={mainColor} title={'Přihlásit se jako dítě'} onPress={() => loginChild()}/>
