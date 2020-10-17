@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import CalendarScreen from '../../screens/CalendarScreen';
-import EventAddScreen from '../../screens/EventAddScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import EventAddScreen from '../screens/EventAddScreen';
 
 export const CalendarStack = ({}) => {
     const Stack = createStackNavigator();
