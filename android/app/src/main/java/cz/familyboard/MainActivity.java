@@ -1,4 +1,4 @@
-package cz.familyboard;
+package cz.polygonunicorn.familyboard;
 
 import com.facebook.react.ReactActivity;
 

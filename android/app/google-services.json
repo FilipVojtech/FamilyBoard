@@ -1,79 +1,34 @@
 {
   "project_info": {
-    "project_number": "609296764014",
-    "firebase_url": "https://familyboard-app.firebaseio.com",
-    "project_id": "familyboard-app",
-    "storage_bucket": "familyboard-app.appspot.com"
+    "project_number": "41544552314",
+    "firebase_url": "https://polygonunicorn-familyboard.firebaseio.com",
+    "project_id": "polygonunicorn-familyboard",
+    "storage_bucket": "polygonunicorn-familyboard.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:609296764014:android:79c6931ec7010bbccaaa7f",
+        "mobilesdk_app_id": "1:41544552314:android:2794dcf73a0f810cc810c3",
         "android_client_info": {
-          "package_name": "cz.familyboard"
+          "package_name": "cz.polygonunicorn.familyboard"
         }
       },
       "oauth_client": [
         {
-          "client_id": "609296764014-0injfjnbe6n6171a25da1isbk86n6rnj.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cz.familyboard",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "609296764014-5innpdmmfh82c6v3a1rp0com6cmi1kpk.apps.googleusercontent.com",
+          "client_id": "41544552314-neogrq3dpe5m2vfs0rua2g2rldv36mfl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAQpabwG3AEt8NLsOq8IGyWb5OidgUQbjM"
+          "current_key": "AIzaSyDOjUze2dKjY_ggWnqM3kp3hQEKcbfpZog"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "609296764014-5innpdmmfh82c6v3a1rp0com6cmi1kpk.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:609296764014:android:f954194c6b60f493caaa7f",
-        "android_client_info": {
-          "package_name": "cz.filipvojtech.familyboard"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "609296764014-5vcdgrvbl0ir8g20m4v2p800gd9i3tqo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cz.filipvojtech.familyboard",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "609296764014-5innpdmmfh82c6v3a1rp0com6cmi1kpk.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAQpabwG3AEt8NLsOq8IGyWb5OidgUQbjM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "609296764014-5innpdmmfh82c6v3a1rp0com6cmi1kpk.apps.googleusercontent.com",
+              "client_id": "41544552314-neogrq3dpe5m2vfs0rua2g2rldv36mfl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
