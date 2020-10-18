@@ -1,0 +1,27 @@
+{
+  "mail": "Mail",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register",
+  "loginMother": "Login as a Mother",
+  "loginFather": "Login as a Father",
+  "loginChild": "Login as a Child",
+  "logout": "Log out",
+
+  "healthCard": "Health card",
+
+  "calendar": "Calendar",
+  "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  "today": "Today",
+
+  "home": "Home",
+
+  "notes": "Notes",
+  "notesNothing": "",
+
+  "messages": "Messages"
+}
+
