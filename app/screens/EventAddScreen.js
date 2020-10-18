@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {CalendarContext} from '../components/CalendarContext';
+import {CalendarContext} from '../contexts/CalendarContext';
 import {Button, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {ThemeContext} from '../contexts/ThemesContext';
 import DateTimePicker from '@react-native-community/datetimepicker';

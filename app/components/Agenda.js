@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {CalendarContext} from './CalendarContext';
+import {CalendarContext} from '../contexts/CalendarContext';
 
 export default function Agenda(props) {
     const {events} = useContext(CalendarContext);
