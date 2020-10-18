@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {CalendarList, LocaleConfig} from 'react-native-calendars';
-import {ThemeContext} from '../components/ThemesContext';
+import {ThemeContext} from '../contexts/ThemesContext';
 import {CalendarContext} from '../components/CalendarContext';
 import Agenda from '../components/Agenda';
 

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {AuthContext} from './AuthProvider';
+import {AuthContext} from '../contexts/AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import {ActivityIndicator} from 'react-native';

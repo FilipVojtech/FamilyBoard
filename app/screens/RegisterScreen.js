@@ -5,7 +5,7 @@ import {
     Button,
 } from 'react-native';
 import {Center} from '../components/Center';
-import {ThemeContext} from '../components/ThemesContext';
+import {ThemeContext} from '../contexts/ThemesContext';
 
 //Registrační obrazovka
 //Registrovat se mohou pouze rodiče (osoby nad 18 let)

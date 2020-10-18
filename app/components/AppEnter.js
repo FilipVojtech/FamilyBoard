@@ -1,7 +1,7 @@
 import React from 'react';
-import {AuthProvider} from './AuthProvider';
+import {AuthProvider} from '../contexts/AuthProvider';
 import Routes from './Routes';
-import {ThemesContext} from './ThemesContext';
+import {ThemesContext} from '../contexts/ThemesContext';
 import {Calendars} from './CalendarContext';
 
 /**

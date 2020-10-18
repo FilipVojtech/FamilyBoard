@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeStack} from './HomeStack';
 import {NotesStack} from './NotesStack';
-import {UserStack} from '../components/UserStack';
+import {UserStack} from './UserStack';
 import MessagesScreen from '../screens/MessagesScreen';
 import {CalendarStack} from './CalendarStack';
-import {AuthContext} from '../components/AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from '../components/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
 
 const Tab = createBottomTabNavigator();
 

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, StyleSheet, TextInput, View} from 'react-native';
-import {ThemeContext} from '../components/ThemesContext';
-import {AuthContext} from '../components/AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
 import AsyncStorage from '@react-native-community/async-storage';
 
 //TODO: Obrazovka pro upravování poznámek

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {AuthContext} from '../components/AuthProvider';
+import {AuthContext} from '../contexts/AuthProvider';
 
 //Domovská obrazovka
 //Domovkská obrazovka obsahuje stručný přehled z ostatních karet

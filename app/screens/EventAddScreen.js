@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {CalendarContext} from '../components/CalendarContext';
 import {Button, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {ThemeContext} from '../components/ThemesContext';
+import {ThemeContext} from '../contexts/ThemesContext';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 /**
@@ -17,13 +17,14 @@ export default function EventAddScreen({route, navigation}) {
     const {events, setEvents} = useContext(CalendarContext);
     const {mainColor} = useContext(ThemeContext);
 
+    const [date, setDate] = useState(new Date(route.params.timestamp));
+
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
-    const [whatSetting, setWhatSetting] = useState(date);
 
+    const [whatSetting, setWhatSetting] = useState(date);
     const [title, setTitle] = useState('');
     const [isAllDay, setIsAllDay] = useState(false);
-    const [date, setDate] = useState(new Date(route.params.timestamp));
     const [timeFrom, setTimeFrom] = useState(new Date(date));
     const [timeTo, setTimeTo] = useState(new Date(date));
 

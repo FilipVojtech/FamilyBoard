@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Text, View} from 'react-native';
-import {AuthContext} from '../components/AuthProvider';
+import {AuthContext} from '../contexts/AuthProvider';
 
 //TODO: Obrazovka, kde si každý uživatel vloží zdravotní údaje
 //Údaje mohou přijít vhod, dostal by se člen do života ohrožující situace

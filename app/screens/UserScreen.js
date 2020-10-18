@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {AuthContext} from '../components/AuthProvider';
-import {ThemeContext} from '../components/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
 
 //TODO: Obrazovka uživatele
 //Obsahuje profilový obrázek, jméno, ostatní členy rodiny, odkaz na obrazovku zdraví

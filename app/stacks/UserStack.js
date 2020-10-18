@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import UserScreen from '../screens/UserScreen';
 import HealthScreen from '../screens/HealthScreen';
-import {AuthContext} from './AuthProvider';
+import {AuthContext} from '../contexts/AuthProvider';
 import {Text, TouchableOpacity} from 'react-native';
 
 //Navigační stack pro záložku uživatele

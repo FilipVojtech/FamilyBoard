@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from '../components/ThemesContext';
+import {ThemeContext} from '../contexts/ThemesContext';
 import AsyncStorage from '@react-native-community/async-storage';
-import {AuthContext} from '../components/AuthProvider';
+import {AuthContext} from '../contexts/AuthProvider';
 
 //Všichni členové domácnosti zde chatují ve skupinové koncerzaci
 export default function MessagesScreen() {

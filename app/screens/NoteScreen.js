@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Button} from 'react-native';
 import NoteList from '../components/NoteList';
-import {ThemeContext} from '../components/ThemesContext';
+import {ThemeContext} from '../contexts/ThemesContext';
 
 // Obrazovka obsahující seznam všech poznámek a tlačítko pro přidání poznámky
 // Nic zásadního se zde neděje

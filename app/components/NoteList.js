@@ -3,8 +3,8 @@ import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View,} from 'react-
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from './ThemesContext';
-import {AuthContext} from './AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
 
 //Modul pro vytvoření listu poznámek z komponentu NoteItem
 //Uchovává v sobě state poznámek a spravuje jej

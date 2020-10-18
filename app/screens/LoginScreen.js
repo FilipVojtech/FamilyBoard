@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import {Button, View} from 'react-native';
 import {Center} from '../components/Center';
-import {AuthContext} from '../components/AuthProvider';
-import {ThemeContext} from '../components/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
+import {LanguageContext} from "../contexts/LanguagesContext";
 
 //Obrazovka s odkazy na přihlašovací, nebo registrační obrazovky
 export default function LoginScreen({navigation}) {

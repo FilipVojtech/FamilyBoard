@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, View, TextInput, Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {AuthContext} from '../components/AuthProvider';
-import {ThemeContext} from '../components/ThemesContext';
+import {AuthContext} from '../contexts/AuthProvider';
+import {ThemeContext} from '../contexts/ThemesContext';
 
 export default function NoteEditScreen({route, navigation}) {
     const {mainColor} = useContext(ThemeContext);
