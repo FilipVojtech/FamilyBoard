@@ -1,5 +1,9 @@
 import React, {useContext} from 'react';
-import {Button, View} from 'react-native';
+import {
+    Button,
+    Image,
+    View
+} from 'react-native';
 import {Center} from '../components/Center';
 import {AuthContext} from '../contexts/AuthProvider';
 import {ThemeContext} from '../contexts/ThemesContext';
@@ -11,9 +15,10 @@ export default function LoginScreen({navigation}) {
     const {login, loginChild, loginMother} = useContext(AuthContext);
 
     return (
+        <React.Fragment>
         <Center>
-            <View>
-            </View>
+                <Image source={require('../res/img/logo.png')}/>
+                <TextInput
             <View>
                 <Button color={mainColor} title={'Přihlásit se jako otec'} onPress={() => login()}/>
                 <Button color={mainColor} title={'Přihlásit se jako matka'} onPress={() => loginMother()}/>
@@ -21,5 +26,6 @@ export default function LoginScreen({navigation}) {
                 <Button color={mainColor} title={'Registrovat se'} onPress={() => navigation.navigate('Register')}/>
             </View>
         </Center>
+        </React.Fragment>
     );
 }
