@@ -5,6 +5,8 @@ export const AuthContext = React.createContext({
     user: null,
     login: () => {
     },
+    loginFather: () => {
+    },
     loginMother: () => {
     },
     loginChild: () => {
@@ -33,6 +35,8 @@ export const AuthProvider = ({children}) => {
         <AuthContext.Provider value={{
             user: user,
             login: () => {
+            },
+            loginFather: () => {
                 let addedUser = new User('Dwayne', 'Dwayne', 'Johnson', true, 'bf68e9a7-b484-4f3a-8cbd-6d4c90c1587f');
                 setUsers([...users, addedUser]);
                 setUser(addedUser);
