@@ -10,7 +10,7 @@ const languageObj = {
     'cs': cs,
 }
 
-export const LanguagesContext = ({children}) => {
+export const Languages = ({children}) => {
     const evalLanguage = () => RNLocalize.findBestAvailableLanguage(Object.keys(languageObj)).languageTag || 'en';
     const currentLanguage = evalLanguage();
     const langStrings = {currentLanguage, ...languageObj[evalLanguage()]};
