@@ -4,6 +4,7 @@ import {HomeStack} from './HomeStack';
 import {NotesStack} from './NotesStack';
 import {UserStack} from './UserStack';
 import MessagesScreen from '../screens/MessagesScreen';
+import {LanguageContext} from "../contexts/Languages";
 import {CalendarStack} from './CalendarStack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../contexts/AuthProvider';
@@ -20,6 +21,8 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
+    const t = useContext(LanguageContext);
+
     return (
         <Tab.Navigator
             initialRouteName='Home'
@@ -48,10 +51,10 @@ export default function Navigation() {
             }}
         >
             <Tab.Screen options={{title: user.name}} name="User" component={UserStack}/>
-            <Tab.Screen options={{title: 'Kalendář'}} name='Calendar' component={CalendarStack}/>
-            <Tab.Screen options={{title: 'Domů'}} name="Home" component={HomeStack}/>
-            <Tab.Screen options={{title: 'Poznámky'}} name="Notes" component={NotesStack}/>
-            <Tab.Screen options={{title: 'Zprávy'}} name='Messages' component={MessagesScreen}/>
+            <Tab.Screen options={{title: t.calendar}} name='Calendar' component={CalendarStack}/>
+            <Tab.Screen options={{title: t.home}} name="Home" component={HomeStack}/>
+            <Tab.Screen options={{title: t.notes}} name="Notes" component={NotesStack}/>
+            <Tab.Screen options={{title: t.messages}} name='Messages' component={MessagesScreen}/>
         </Tab.Navigator>
     );
 }
