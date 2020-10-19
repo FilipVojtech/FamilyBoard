@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ThemeContext} from '../contexts/ThemesContext';
 import AsyncStorage from '@react-native-community/async-storage';
+import {ThemeContext} from '../contexts/ThemesContext';
 import {AuthContext} from '../contexts/AuthProvider';
+import {LanguageContext} from "../contexts/Languages";
 
 //Všichni členové domácnosti zde chatují ve skupinové koncerzaci
 export default function MessagesScreen() {
     const {user} = useContext(AuthContext);
     const {mainColor} = useContext(ThemeContext);
+    const t = useContext(LanguageContext);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
@@ -78,7 +80,7 @@ export default function MessagesScreen() {
                     style={style.textInputBox}
                     numberOfLines={2}
                     multiline={true}
-                    placeholder='Napiš něco'
+                    placeholder={t.writeSomething}
                     onChangeText={text => {
                         setMessage(text);
                     }}

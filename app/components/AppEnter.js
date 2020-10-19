@@ -1,6 +1,7 @@
 import React from 'react';
 import {AuthProvider} from '../contexts/AuthProvider';
 import Routes from './Routes';
+import {Languages} from "../contexts/Languages";
 import {ThemesContext} from '../contexts/ThemesContext';
 import {Calendars} from '../contexts/CalendarContext';
 
@@ -11,11 +12,13 @@ import {Calendars} from '../contexts/CalendarContext';
 export default function AppEnter() {
     return (
         <ThemesContext>
-            <AuthProvider>
-                <Calendars>
-                    <Routes/>
-                </Calendars>
-            </AuthProvider>
+            <Languages>
+                <AuthProvider>
+                    <Calendars>
+                        <Routes/>
+                    </Calendars>
+                </AuthProvider>
+            </Languages>
         </ThemesContext>
     );
 };

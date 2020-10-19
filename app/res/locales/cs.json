@@ -1,0 +1,28 @@
+{
+  "mail": "Mail",
+  "password": "Heslo",
+  "login": "Přihlásit",
+  "register": "Registrovat",
+  "loginMother": "Přihlásit se jako otec",
+  "loginFather": "Přihlásit se jako matka",
+  "loginChild": "Přihlásit se jako dítě",
+  "logout": "Odhlásit se",
+
+  "healthCard": "Zdravotní karta",
+
+  "calendar": "Kalendář",
+  "monthNames": ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+  "monthNamesShort": ["Led", "Úno", "Bře", "Dub", "Kvě", "Čvn", "Čvc", "Srp", "Zář", "Říj", "Lis", "Pro"],
+  "dayNames": ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
+  "dayNamesShort": ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
+  "today": "Dnes",
+
+  "home": "Domů",
+
+  "notes": "Poznámky",
+  "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko přidat poznámku",
+  "added": "Přidáno",
+
+  "messages": "Zprávy",
+  "writeSomething": "Write something"
+}

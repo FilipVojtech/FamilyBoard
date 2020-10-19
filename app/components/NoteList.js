@@ -1,23 +1,24 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeContext} from '../contexts/ThemesContext';
 import {AuthContext} from '../contexts/AuthProvider';
+import {LanguageContext} from "../contexts/Languages";
 
 //Modul pro vytvoření listu poznámek z komponentu NoteItem
 //Uchovává v sobě state poznámek a spravuje jej
 export default function NoteList(props) {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
+    const t = useState(LanguageContext);
     const [notes, setNotes] = useState([]);
 
-    useEffect(() => {
-        AsyncStorage.getItem('notes').then(value => {
+    AsyncStorage.getItem('notes')
+        .then(value => {
             setNotes(JSON.parse(value));
         });
-    });
 
     function deleteNote(item) {
         /**
@@ -57,10 +58,7 @@ export default function NoteList(props) {
     if (notes == null || notes.length === 0) {
         return (
             <Center>
-                <Text style={{textAlign: 'center'}}>Nic tu není</Text>
-                <Text style={{textAlign: 'center'}}>
-                    Pro přidání, klepněte na tlačítko přidat poznámku
-                </Text>
+                <Text style={style.center}>{`Text: ${t.notesNothing}`}</Text>
             </Center>
         );
     }
@@ -76,7 +74,7 @@ export default function NoteList(props) {
                         onPress={() => props.navigation.navigate('Edit', item)}
                         onLongPress={() => deleteNote(item)}>
                         <View style={style.noteText}>
-                            <Text style={style.unimportant}>Přidáno: {item.dateAdded}</Text>
+                            <Text style={style.unimportant}>{`${t.added}: ${item.dateAdded}`}</Text>
                             {item.title ? (
                                 <Text style={style.title}>{item.title}</Text>
                             ) : null}
@@ -117,6 +115,9 @@ export default function NoteList(props) {
 }
 
 const style = StyleSheet.create({
+    center: {
+        textAlign: 'center',
+    },
     note: {
         flexDirection: 'row',
         alignItems: 'center',
