@@ -4,11 +4,11 @@ import {HomeStack} from './HomeStack';
 import {NotesStack} from './NotesStack';
 import {UserStack} from './UserStack';
 import MessagesScreen from '../screens/MessagesScreen';
-import {LanguageContext} from "../contexts/Languages";
 import {CalendarStack} from './CalendarStack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AuthContext} from '../contexts/AuthProvider';
 import {ThemeContext} from '../contexts/ThemesContext';
+import {LanguageContext} from "../contexts/Languages";
 
 const Tab = createBottomTabNavigator();
 
