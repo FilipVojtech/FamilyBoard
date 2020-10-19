@@ -12,6 +12,8 @@ Assignment: Create a JavaScript app with minimum of 800 lines
 My goal was to learn a new JS framework. In the end I went with React Native.
 
 # How to run this app
+Either download the .apk from releases or clone this repo  
+
 This is a _React Native_ app.  
 This app was tested on Android only. No guarantee, that it'll work on iOS
 
