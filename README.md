@@ -47,10 +47,9 @@ OR
 **To fix this:**  
     1. Open Command Prompt in root folder of this project  
     2. Type in these  
-        ````
-        a. cd android  
-        b. gradlew clean  
-        ````  
+        ```
+        cd android && ./gradlew clean  
+        ```  
     3. Run the app  
 
 >For what I know, this only happens on Windows  
