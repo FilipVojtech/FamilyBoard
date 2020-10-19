@@ -61,3 +61,7 @@ OR
 
 >This only happens after fresh install or wiping data  
 >The notes you added should be there, React possibly didn't updated the DOM
+
+
+# Resources  
+[Trello Board](https://trello.com/b/svLMdmN6)
