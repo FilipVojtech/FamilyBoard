@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Alert, FlatList, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
@@ -15,11 +15,10 @@ export default function NoteList(props) {
     const t = useState(LanguageContext);
     const [notes, setNotes] = useState([]);
 
-    useEffect(() => {
-        AsyncStorage.getItem('notes').then(value => {
+    AsyncStorage.getItem('notes')
+        .then(value => {
             setNotes(JSON.parse(value));
         });
-    });
 
     function deleteNote(item) {
         /**
@@ -116,6 +115,9 @@ export default function NoteList(props) {
 }
 
 const style = StyleSheet.create({
+    center: {
+        textAlign: 'center',
+    },
     note: {
         flexDirection: 'row',
         alignItems: 'center',
