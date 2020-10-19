@@ -20,7 +20,8 @@
   "home": "Domů",
 
   "notes": "Poznámky",
-  "notesNothing": "",
+  "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko přidat poznámku",
+  "added": "Přidáno",
 
   "messages": "Zprávy"
 }

@@ -20,7 +20,8 @@
   "home": "Home",
 
   "notes": "Notes",
-  "notesNothing": "",
+  "notesNothing": "There's nothing here \nTo add a new note, tap on the add note button",
+  "added": "Added",
 
   "messages": "Messages"
 }
