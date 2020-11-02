@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
+import {Button, StyleSheet, TextInput, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {AuthContext} from '../contexts/AuthProvider';
 import {ThemeContext} from '../contexts/ThemesContext';
+import {LanguageContext} from "../contexts/Languages";
 
 export default function NoteEditScreen({route, navigation}) {
     const {mainColor} = useContext(ThemeContext);
@@ -10,6 +11,7 @@ export default function NoteEditScreen({route, navigation}) {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [parsedNotes, setParsedNotes] = useState([]);
+    const t = useContext(LanguageContext);
 
     useEffect(() => {
         AsyncStorage.getItem('notes')
@@ -20,36 +22,31 @@ export default function NoteEditScreen({route, navigation}) {
 
     return (
         <View style={style.container}>
-            {/**
-             Textové pole pro zadání nadpisu
-             */}
             <TextInput
                 style={style.title}
                 numberOfLines={1}
-                placeholder={'Nadpis (nepovinný)'}
+                placeholder={`${t.title} (${t.optional})`}
                 onChangeText={string => setTitle(string)}
                 returnKeyType={'done'}
                 blurOnSubmit={true}
                 defaultValue={route.params.title}
             />
-            {/**
-             Textové pole pro zadání textu poznámky
-             */}
             <TextInput
                 autoFocus={true}
                 style={style.text}
                 multiline
                 textAlignVertical={'top'}
                 numberOfLines={1}
-                placeholder={'Sem něco napiš'}
+                placeholder={t.text}
                 onChangeText={string => setText(string)}
                 blurOnSubmit={true}
                 returnKeyType={'none'}
                 defaultValue={route.params.text}
             />
             <Button
-                title={'Uložit'}
+                title={t.save}
                 color={mainColor}
+                disabled={text==false}
                 onPress={() => {
                     alert(`Zadaný text: ${title} | ${text}`);
                     navigation.goBack();
