@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Center} from './Center';
 import {ActivityIndicator} from 'react-native';
 import Navigation from '../stacks/Navigation';
-import {Login} from '../stacks/Login';
+import {LoginStack} from '../stacks/LoginStack';
 import {NavigationContainer} from '@react-navigation/native';
 
 /**Vykreslování správné části aplikace**/
@@ -44,7 +44,7 @@ export default function Routes({}) {
 
     return (
         <NavigationContainer>
-            {user ? <Navigation/> : <Login/>}
+            {user ? <Navigation/> : <LoginStack/>}
         </NavigationContainer>
     );
 };
