@@ -1,11 +1,15 @@
 {
   "mail": "Mail",
+  "back": "Back",
+  "save": "Save",
+
   "password": "Password",
   "login": "Login",
-  "register": "Register",
   "loginMother": "Login as a Mother",
   "loginFather": "Login as a Father",
   "loginChild": "Login as a Child",
+  "register": "Register",
+  "createAccount": "Create an account",
   "logout": "Log out",
 
   "healthCard": "Health card",
@@ -22,6 +26,12 @@
   "notes": "Notes",
   "notesNothing": "There's nothing here \nTo add a new note, tap on the add note button",
   "added": "Added",
+  "addNote": "Add note",
+  "editNote": "Edit note",
+  "title": "Title",
+  "text": "Text",
+  "optional" : "Optional",
+  "by": "By",
 
   "messages": "Messages",
   "writeSomething": "Write something"

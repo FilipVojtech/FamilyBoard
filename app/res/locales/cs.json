@@ -1,11 +1,15 @@
 {
   "mail": "Mail",
+  "back": "Zpět",
+  "save": "Uložit",
+
   "password": "Heslo",
   "login": "Přihlásit",
-  "register": "Registrovat",
   "loginMother": "Přihlásit se jako otec",
   "loginFather": "Přihlásit se jako matka",
   "loginChild": "Přihlásit se jako dítě",
+  "register": "Registrovat",
+  "createAccount": "Vytvořit účet",
   "logout": "Odhlásit se",
 
   "healthCard": "Zdravotní karta",
@@ -22,6 +26,12 @@
   "notes": "Poznámky",
   "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko přidat poznámku",
   "added": "Přidáno",
+  "addNote": "Přidat poznámku",
+  "editNote": "Upravování poznámky",
+  "title": "Nadpis",
+  "text": "Text",
+  "optional" : "Nepovinný",
+  "by": "",
 
   "messages": "Zprávy",
   "writeSomething": "Write something"
