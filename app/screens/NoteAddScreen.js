@@ -1,89 +1,96 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
-import {ThemeContext} from '../contexts/ThemesContext';
+import React, {useContext, useState} from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
 import {AuthContext} from '../contexts/AuthProvider';
+import {LanguageContext} from "../contexts/Languages";
 import AsyncStorage from '@react-native-community/async-storage';
+import SaveButton from "../components/SaveButton";
 
-//TODO: Obrazovka pro upravování poznámek
 /**
  * Zde se generuje seznam poznámek
  * Společně s metodami pro správu poznámek
  **/
 export default function NoteAddScreen({navigation}) {
-    const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
+    const t = useContext(LanguageContext);
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [parsedNotes, setParsedNotes] = useState([]);
 
-    useEffect(() => {
-        AsyncStorage.getItem('notes')
-            .then(value => {
-                setParsedNotes(JSON.parse(value));
-            });
-    }, []);
+    AsyncStorage.getItem('notes')
+        .then(value => {
+            setParsedNotes(JSON.parse(value));
+        });
+
+    const saveNote = () => {
+        const strippedUser = {
+            name: user.name,
+            surname: user.surname,
+            isParent: user.isParent,
+            UUID: user.UUID,
+        };
+        const createdNote = new Note(title, text, strippedUser, parsedNotes);
+        if (parsedNotes == null) {
+            AsyncStorage.setItem('notes', JSON.stringify([createdNote]));
+        } else {
+            AsyncStorage.setItem('notes', JSON.stringify([...parsedNotes, createdNote]));
+        }
+        navigation.goBack();
+    }
 
     return (
         <View style={style.container}>
-            {/**
-             Textové pole pro zadání nadpisu
-             */}
             <TextInput
                 style={style.title}
                 numberOfLines={1}
-                placeholder={'Nadpis (nepovinný)'}
+                placeholder={`${t.title} (${t.optional.toLowerCase()})`}
                 onChangeText={string => setTitle(string)}
                 returnKeyType={'done'}
                 blurOnSubmit={true}
             />
-            {/**
-             Textové pole pro zadání textu poznámky
-             */}
             <TextInput
                 autoFocus={true}
                 style={style.text}
                 multiline
                 textAlignVertical={'top'}
                 numberOfLines={1}
-                placeholder={'Sem něco napiš'}
+                placeholder={t.text}
                 onChangeText={string => setText(string)}
                 blurOnSubmit={true}
                 returnKeyType={'none'}
             />
-            {
-                /*<Icon name={'content-save'} style={style.saveButton} color={mainColor} size={64}/>*/
-            }
-            {/**
-             Pokud je prázdné tělo poznámky, tak nastav tlačítko jako neoktivní
-             */}
-            <View style={style.buttonArea}>
-                <Button
-                    title={'Přidat'}
-                    color={mainColor}
-                    disabled={text == false} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku
-                    onPress={() => {
-                        {/**
-                         Vyvoří poznámku jako objekt
-                         Uloží seznam poznámek do Uložiště
-                         Nakonec se vrátí na předchozí obrazovku
-                         **/
-                        }
-                        const strippedUser = {
-                            name: user.name,
-                            surname: user.surname,
-                            isParent: user.isParent,
-                            UUID: user.UUID,
-                        };
-                        const createdNote = new Note(title, text, strippedUser, parsedNotes);
-                        if (parsedNotes == null) {
-                            AsyncStorage.setItem('notes', JSON.stringify([createdNote]));
-                        } else {
-                            AsyncStorage.setItem('notes', JSON.stringify([...parsedNotes, createdNote]));
-                        }
-                        navigation.goBack();
-                    }}
-                />
-            </View>
+
+            <SaveButton function={saveNote} text={text}/>
+
+            {/*<TouchableOpacity*/}
+            {/*    style={text == false ? style.disabledButtonArea : [style.buttonArea, {backgroundColor: mainColor}]}*/}
+            {/*    disabled={text == false}*/}
+            {/*    onPress={() => saveNote()}*/}
+            {/*>*/}
+            {/*    <Icon name={'content-save'} style={style.saveButton} color={'white'} size={40}/>*/}
+            {/*</TouchableOpacity>*/}
+
+            {/*<View>*/}
+            {/*    <Button*/}
+            {/*        title={'Přidat'}*/}
+            {/*        color={mainColor}*/}
+            {/*        disabled={text == false} //Podmínka musí zůstat takto, jinak lze nahrát prázdnou poznámku*/}
+            {/*        onPress={() => {*/}
+            {/*            const strippedUser = {*/}
+            {/*                name: user.name,*/}
+            {/*                surname: user.surname,*/}
+            {/*                isParent: user.isParent,*/}
+            {/*                UUID: user.UUID,*/}
+            {/*            };*/}
+            {/*            const createdNote = new Note(title, text, strippedUser, parsedNotes);*/}
+            {/*            if (parsedNotes == null) {*/}
+            {/*                AsyncStorage.setItem('notes', JSON.stringify([createdNote]));*/}
+            {/*            } else {*/}
+            {/*                AsyncStorage.setItem('notes', JSON.stringify([...parsedNotes, createdNote]));*/}
+            {/*            }*/}
+            {/*            navigation.goBack();*/}
+            {/*        }}*/}
+            {/*    />*/}
+            {/*</View>*/}
         </View>
     );
 }
@@ -115,8 +122,26 @@ const style = StyleSheet.create({
     text: {
         flexGrow: 1,
     },
-    buttonArea: {},
-    saveButton: {
-        backgroundColor: 'black',
+    buttonArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 64,
+        height: 64,
+        borderRadius: 30,
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
     },
+    disabledButtonArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 64,
+        height: 64,
+        borderRadius: 30,
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: '#DFDFDF'
+    },
+    saveButton: {},
 });
