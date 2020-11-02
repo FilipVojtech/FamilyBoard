@@ -5,6 +5,7 @@ import {AuthContext} from '../contexts/AuthProvider';
 import {ThemeContext} from '../contexts/ThemesContext';
 import {LanguageContext} from "../contexts/Languages";
 
+//TODO Note Edit Screen
 export default function NoteEditScreen({route, navigation}) {
     const {mainColor} = useContext(ThemeContext);
     const {user} = useContext(AuthContext);
