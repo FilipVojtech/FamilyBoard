@@ -61,8 +61,13 @@
   ],
   "today": "Dnes",
   "home": "Domů",
+  "greetings": [
+    "Ahoj",
+    "Vítej",
+    "Dobrý den"
+  ],
   "notes": "Poznámky",
-  "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko přidat poznámku",
+  "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko níže",
   "added": "Přidáno",
   "addNote": "Přidat poznámku",
   "editNote": "Upravování poznámky",

@@ -61,8 +61,13 @@
   ],
   "today": "Today",
   "home": "Home",
+  "greetings": [
+    "Hello",
+    "Welcome",
+    "Good day to you"
+  ],
   "notes": "Notes",
-  "notesNothing": "There's nothing here \nTo add a new note, tap on the add note button",
+  "notesNothing": "There's nothing here \nTo add a new note, tap on the button below",
   "added": "Added",
   "addNote": "Add note",
   "editNote": "Edit note",
