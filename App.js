@@ -5,7 +5,7 @@ import {ThemesContext} from './app/contexts/ThemesContext';
 import {Calendars} from './app/contexts/CalendarContext';
 import Routes from './app/components/Routes';
 
-export default function AppEnter() {
+export default function App() {
     return (
         <ThemesContext>
             <Languages>
