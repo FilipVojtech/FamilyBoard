@@ -3,7 +3,7 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import {AuthContext} from '../contexts/AuthProvider';
 import {LanguageContext} from "../contexts/Languages";
 import AsyncStorage from '@react-native-community/async-storage';
-import SaveButton from "../components/SaveButton";
+import Button from "../components/Button";
 
 /**
  * Zde se generuje seznam poznámek
@@ -59,7 +59,7 @@ export default function NoteAddScreen({navigation}) {
                 returnKeyType={'none'}
             />
 
-            <SaveButton function={saveNote} text={text}/>
+            <Button function={saveNote} isActive={text == false}/>
 
             {/*<TouchableOpacity*/}
             {/*    style={text == false ? style.disabledButtonArea : [style.buttonArea, {backgroundColor: mainColor}]}*/}

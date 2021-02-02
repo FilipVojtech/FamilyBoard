@@ -1,8 +1,8 @@
 {
+  "currentLanguage": "en",
   "mail": "Mail",
   "back": "Back",
   "save": "Save",
-
   "password": "Password",
   "login": "Login",
   "loginMother": "Login as a Mother",
@@ -11,18 +11,56 @@
   "register": "Register",
   "createAccount": "Create an account",
   "logout": "Log out",
-
   "healthCard": "Health card",
-
   "calendar": "Calendar",
-  "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  "monthNamesShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  "dayNamesShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  "monthNames": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "monthNamesShort": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  "dayNames": [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+  "dayNamesShort": [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+  ],
   "today": "Today",
-
   "home": "Home",
-
   "notes": "Notes",
   "notesNothing": "There's nothing here \nTo add a new note, tap on the add note button",
   "added": "Added",
@@ -30,10 +68,8 @@
   "editNote": "Edit note",
   "title": "Title",
   "text": "Text",
-  "optional" : "Optional",
+  "optional": "Optional",
   "by": "By",
-
   "messages": "Messages",
   "writeSomething": "Write something"
 }
-

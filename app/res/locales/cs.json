@@ -1,8 +1,8 @@
 {
+  "currentLanguage": "cs",
   "mail": "Mail",
   "back": "Zpět",
   "save": "Uložit",
-
   "password": "Heslo",
   "login": "Přihlásit",
   "loginMother": "Přihlásit se jako otec",
@@ -11,18 +11,56 @@
   "register": "Registrovat",
   "createAccount": "Vytvořit účet",
   "logout": "Odhlásit se",
-
   "healthCard": "Zdravotní karta",
-
   "calendar": "Kalendář",
-  "monthNames": ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
-  "monthNamesShort": ["Led", "Úno", "Bře", "Dub", "Kvě", "Čvn", "Čvc", "Srp", "Zář", "Říj", "Lis", "Pro"],
-  "dayNames": ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
-  "dayNamesShort": ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
+  "monthNames": [
+    "Leden",
+    "Únor",
+    "Březen",
+    "Duben",
+    "Květen",
+    "Červen",
+    "Červenec",
+    "Srpen",
+    "Září",
+    "Říjen",
+    "Listopad",
+    "Prosinec"
+  ],
+  "monthNamesShort": [
+    "Led",
+    "Úno",
+    "Bře",
+    "Dub",
+    "Kvě",
+    "Čvn",
+    "Čvc",
+    "Srp",
+    "Zář",
+    "Říj",
+    "Lis",
+    "Pro"
+  ],
+  "dayNames": [
+    "Neděle",
+    "Pondělí",
+    "Úterý",
+    "Středa",
+    "Čtvrtek",
+    "Pátek",
+    "Sobota"
+  ],
+  "dayNamesShort": [
+    "Ne",
+    "Po",
+    "Út",
+    "St",
+    "Čt",
+    "Pá",
+    "So"
+  ],
   "today": "Dnes",
-
   "home": "Domů",
-
   "notes": "Poznámky",
   "notesNothing": "Nic tu není \nPro přidání, klepněte na tlačítko přidat poznámku",
   "added": "Přidáno",
@@ -30,9 +68,8 @@
   "editNote": "Upravování poznámky",
   "title": "Nadpis",
   "text": "Text",
-  "optional" : "Nepovinný",
-  "by": "",
-
+  "optional": "Nepovinný",
+  "by": "Od",
   "messages": "Zprávy",
   "writeSomething": "Write something"
 }
