@@ -3,8 +3,11 @@
 .DS_Store
 
 # Xcode
-#
-build/
+!**/*.xcodeproj
+!**/*.pbxproj
+!**/*.xcworkspacedata
+!**/*.xcsettings
+!**/*.xcscheme
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -20,9 +23,26 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+project.xcworkspace
+
+# Gradle
+/build/
+/packages/react-native-codegen/android/build/
+/packages/react-native-codegen/android/gradlePlugin-build/gradlePlugin/build
+/packages/rn-tester/android/app/.cxx/
+/packages/rn-tester/android/app/build/
+/packages/rn-tester/android/app/gradle/
+/packages/rn-tester/android/app/gradlew
+/packages/rn-tester/android/app/gradlew.bat
+/ReactAndroid/build/
+/ReactAndroid/gradle/
+/ReactAndroid/gradlew
+/ReactAndroid/gradlew.bat
+
+# Watchman
+.watchmanconfig
 
 # Android/IntelliJ
-#
 .idea
 .gradle
 local.properties
@@ -30,15 +50,19 @@ local.properties
 *.hprof
 
 # node.js
-#
 node_modules/
 npm-debug.log
+.nvm
+/bots/node_modules/
+package-lock.json
 
-# BUCK
-buck-out/
-\.buckd/
-*.keystore
-!debug.keystore
+# Buck
+.buckd
+buck-out
+/.lsp.buckd
+/.lsp-buck-out
+/ReactAndroid/src/main/jni/prebuilt/lib/
+/ReactAndroid/src/main/gen
 
 # fastlane
 #
