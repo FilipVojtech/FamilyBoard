@@ -63,4 +63,4 @@ OR
 
 
 # Resources  
-[Trello Board](https://trello.com/b/svLMdmN6)
+[GitKraken Board](https://app.gitkraken.com/glo/board/X41n_2f3FQApxkDW)
