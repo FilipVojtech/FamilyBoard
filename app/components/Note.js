@@ -1,7 +1,7 @@
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../contexts/AuthProvider";
 import {ThemeContext} from "../contexts/ThemesContext";
 import {LanguageContext} from "../contexts/Languages";
@@ -13,10 +13,12 @@ export const Note = (props) => {
     const [notes, setNotes] = useState([]);
     const {navigation, item} = props;
 
-    AsyncStorage.getItem('notes')
-        .then(value => {
-            setNotes(JSON.parse(value));
-        });
+    useEffect(() => {
+        AsyncStorage.getItem('notes')
+            .then(value => {
+                setNotes(JSON.parse(value));
+            });
+    }, []);
 
     function deleteNote(item) {
         if (user.isParent || item.user.UUID === user.UUID) {
@@ -50,27 +52,31 @@ export const Note = (props) => {
 
     return (
         <TouchableOpacity
-            disabled={false}
             style={style.note}
             onPress={() => navigation.navigate('Edit', item)}
             onLongPress={() => deleteNote(item)}>
             <View style={style.noteText}>
                 <Text style={style.unimportant}>
+                    {/*Time and date added*/}
                     {`${t.added}: ${item.dateAdded}`}
                 </Text>
+                {/*
+                Title
+                * If defined > Show it
+                */}
                 {item.title ? <Text style={style.title}>{item.title}</Text> : null}
                 <Text style={style.unimportant}>
+                    {/*Author*/}
                     {t.by.toLowerCase() ? t.by.toLowerCase() + " " : null}{item.user.name} {item.user.surname}
                 </Text>
+                {/*Note Text*/}
                 <Text style={style.text}>{item.text}</Text>
             </View>
             <TouchableOpacity
                 style={style.noteSettings}
                 onPress={() => {
                     for (let i = 0; i < notes.length; i++) {
-                        if (notes[i].id === item.id) {
-                            notes[i].isDone = !notes[i].isDone;
-                        }
+                        if (notes[i].id === item.id) notes[i].isDone = !notes[i].isDone;
                     }
                     AsyncStorage.setItem('notes', JSON.stringify(notes));
                 }}>
