@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, StyleSheet, Text} from 'react-native';
 import {ThemeContext} from '../contexts/ThemesContext';
 import {LanguageContext} from "../contexts/Languages";
@@ -14,10 +14,10 @@ export default function NoteScreen({navigation}) {
     const [notes, setNotes] = useState([]);
     const t = useContext(LanguageContext);
 
-    AsyncStorage.getItem('notes')
-        .then(value => {
-            setNotes(JSON.parse(value));
-        });
+    useEffect(() => {
+        AsyncStorage.getItem('notes')
+            .then(value => setNotes(JSON.parse(value)))
+    })
 
     if (notes == null || notes.length === 0) return (
         <React.Fragment>
